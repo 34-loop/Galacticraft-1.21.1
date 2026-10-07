@@ -180,8 +180,9 @@ screenshot 05-celestial-screen 5
 if grep -qE 'Crash report|---- Minecraft Crash' "$CLIENT_LOG" "$SERVER_LOG"; then
     fail "crash report found"
 fi
-# The virtual display has no audio device, so sound engine errors are expected.
-client_errors=$(grep -E '/ERROR\]' "$CLIENT_LOG" | grep -vE 'SoundEngine|OpenAL' || true)
+# The virtual display has no audio device or text-to-speech library, so sound engine and
+# narrator errors are expected.
+client_errors=$(grep -E '/ERROR\]' "$CLIENT_LOG" | grep -vE 'SoundEngine|OpenAL|mojang/Narrator' || true)
 server_errors=$(grep -E '/ERROR\]' "$SERVER_LOG" || true)
 if [[ -n "$client_errors" ]]; then
     fail "client logged errors"
