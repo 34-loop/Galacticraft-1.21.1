@@ -128,6 +128,20 @@ public class GCMachineRecipes extends FabricRecipeProvider {
                 .unlockedBy(getHasName(GCItems.FLUID_MANIPULATOR), has(GCItems.FLUID_MANIPULATOR))
                 .save(output);
 
+        GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.METHANE_SYNTHESIZER)
+                .define('T', GCItems.LARGE_OXYGEN_TANK)
+                .define('V', GCItems.OXYGEN_VENT)
+                .define('F', GCBlocks.GLASS_FLUID_PIPE)
+                .define('M', GCItems.FLUID_MANIPULATOR)
+                .define('E', GCBlocks.ELECTRIC_FURNACE)
+                .define('X', GCItems.COMPRESSED_BRONZE)
+                .define('O', GCBlocks.OXYGEN_COMPRESSOR)
+                .pattern("TVT")
+                .pattern("FMF")
+                .pattern("EXO")
+                .unlockedBy(getHasName(GCItems.FLUID_MANIPULATOR), has(GCItems.FLUID_MANIPULATOR))
+                .save(output);
+
         GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.COMPRESSOR)
                 .define('I', GCItemTags.ALUMINUM_INGOTS)
                 .define('A', Items.ANVIL)

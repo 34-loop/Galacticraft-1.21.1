@@ -52,6 +52,7 @@ public class GCMenuTypes {
 
     public static final MenuType<MachineMenu<RefineryBlockEntity>> REFINERY = SynchronizedMenuType.create(MachineMenu::new, 84);
     public static final MenuType<MachineMenu<WaterElectrolyzerBlockEntity>> WATER_ELECTROLYZER = SynchronizedMenuType.create(MachineMenu::new, 84);
+    public static final MenuType<MachineMenu<MethaneSynthesizerBlockEntity>> METHANE_SYNTHESIZER = SynchronizedMenuType.create(MachineMenu::new, 84);
 
     public static final MenuType<OxygenCollectorMenu> OXYGEN_COLLECTOR = SynchronizedMenuType.create((type, id, inventory, pos) -> new OxygenCollectorMenu(id, inventory, pos));
 
@@ -105,6 +106,7 @@ public class GCMenuTypes {
         Registry.register(BuiltInRegistries.MENU, Constant.id(Constant.Menu.ELECTRIC_ARC_FURNACE_MENU), ELECTRIC_ARC_FURNACE);
         Registry.register(BuiltInRegistries.MENU, Constant.id(Constant.Menu.REFINERY_MENU), REFINERY);
         Registry.register(BuiltInRegistries.MENU, Constant.id(Constant.Menu.WATER_ELECTROLYZER_MENU), WATER_ELECTROLYZER);
+        Registry.register(BuiltInRegistries.MENU, Constant.id(Constant.Menu.METHANE_SYNTHESIZER_MENU), METHANE_SYNTHESIZER);
 
         Registry.register(BuiltInRegistries.MENU, Constant.id(Constant.Menu.OXYGEN_COLLECTOR_MENU), OXYGEN_COLLECTOR);
         Registry.register(BuiltInRegistries.MENU, Constant.id(Constant.Menu.OXYGEN_COMPRESSOR_MENU), OXYGEN_COMPRESSOR);

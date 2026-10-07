@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fluid_manipulator": {
+      "conditions": {
+        "items": [
+          {
+            "items": "galacticraft:fluid_manipulator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "galacticraft:methane_synthesizer"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fluid_manipulator"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "galacticraft:methane_synthesizer"
+    ]
+  }
+}

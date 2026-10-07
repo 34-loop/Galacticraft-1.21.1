@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "galacticraft:machine/methane_synthesizer"
+    },
+    "active=true": {
+      "model": "galacticraft:machine/methane_synthesizer_active"
+    }
+  }
+}

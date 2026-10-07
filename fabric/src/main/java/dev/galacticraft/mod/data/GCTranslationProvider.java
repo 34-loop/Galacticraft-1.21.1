@@ -400,6 +400,7 @@ public class GCTranslationProvider extends TranslationProvider {
         this.block(GCBlocks.ELECTRIC_ARC_FURNACE, "Electric Arc Furnace");
         this.block(GCBlocks.REFINERY, "Refinery");
         this.block(GCBlocks.WATER_ELECTROLYZER, "Water Electrolyzer");
+        this.block(GCBlocks.METHANE_SYNTHESIZER, "Methane Synthesizer");
         this.block(GCBlocks.OXYGEN_COLLECTOR, "Oxygen Collector");
         this.block(GCBlocks.OXYGEN_SEALER, "Oxygen Sealer");
         this.block(GCBlocks.OXYGEN_BUBBLE_DISTRIBUTOR, "Bubble Distributor");
@@ -1105,6 +1106,7 @@ public class GCTranslationProvider extends TranslationProvider {
         this.blockDesc(GCBlocks.RADAR, "Detects inbound meteors up to 1,024 blocks away. Nearby radars improve tracking accuracy and share targets with cannons.");
         this.blockDesc(GCBlocks.REFINERY, "Refines crude oil into fuel used by rockets and vehicles.");
         this.blockDesc(GCBlocks.WATER_ELECTROLYZER, "Splits water into oxygen and hydrogen using electricity.");
+        this.blockDesc(GCBlocks.METHANE_SYNTHESIZER, "Combines hydrogen with carbon from carbon fragments, or from a carbon dioxide atmosphere through an atmospheric valve, into methane.");
 
         this.add(Tooltip.CREATIVE_ONLY, "Creative Only");
         this.add(Tooltip.ENERGY_REMAINING, "Energy Remaining: %s");
@@ -1299,6 +1301,9 @@ public class GCTranslationProvider extends TranslationProvider {
         this.add(MachineStatus.NO_VALID_GRASS_BLOCKS, "Grass: No Valid Blocks");
         this.add(MachineStatus.REFINING, "Refining");
         this.add(MachineStatus.ELECTROLYZING, "Electrolyzing");
+        this.add(MachineStatus.SYNTHESIZING, "Synthesizing");
+        this.add(MachineStatus.NOT_ENOUGH_HYDROGEN, "Not Enough Hydrogen");
+        this.add(MachineStatus.NOT_ENOUGH_CARBON, "Not Enough Carbon");
         this.add(MachineStatus.MISSING_OIL, "Missing Oil");
         this.add(MachineStatus.FUEL_TANK_FULL, "Fuel Tank Full");
         this.add(MachineStatus.PREPARING, "Preparing");

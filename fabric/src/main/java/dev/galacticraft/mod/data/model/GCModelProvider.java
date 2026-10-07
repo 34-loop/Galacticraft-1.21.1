@@ -334,6 +334,7 @@ public class GCModelProvider extends FabricModelProvider {
 
         createGeothermalGenerator(generator, GCBlocks.GEOTHERMAL_GENERATOR);
         createActiveMachine(generator, GCBlocks.WATER_ELECTROLYZER);
+        createActiveMachine(generator, GCBlocks.METHANE_SYNTHESIZER);
 
         createFoodCanner(generator, GCBlocks.FOOD_CANNER, new String[]{
                 "_empty", "_active"

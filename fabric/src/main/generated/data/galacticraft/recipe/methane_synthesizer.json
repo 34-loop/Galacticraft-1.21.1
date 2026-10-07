@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "galacticraft:electric_furnace"
+    },
+    "F": {
+      "item": "galacticraft:glass_fluid_pipe"
+    },
+    "M": {
+      "item": "galacticraft:fluid_manipulator"
+    },
+    "O": {
+      "item": "galacticraft:oxygen_compressor"
+    },
+    "T": {
+      "item": "galacticraft:large_oxygen_tank"
+    },
+    "V": {
+      "item": "galacticraft:oxygen_vent"
+    },
+    "X": {
+      "item": "galacticraft:compressed_bronze"
+    }
+  },
+  "pattern": [
+    "TVT",
+    "FMF",
+    "EXO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "galacticraft:methane_synthesizer"
+  }
+}

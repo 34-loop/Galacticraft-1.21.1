@@ -307,6 +307,7 @@ public class GCCreativeModeTabs {
                 output.accept(ELECTRIC_ARC_FURNACE);
                 output.accept(REFINERY);
                 output.accept(WATER_ELECTROLYZER);
+                output.accept(METHANE_SYNTHESIZER);
                 output.accept(FUEL_LOADER);
                 output.accept(CARGO_LOADER);
                 output.accept(CARGO_UNLOADER);

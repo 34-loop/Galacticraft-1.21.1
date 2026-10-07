@@ -136,6 +136,14 @@ $RCON "$ow setblock 3 63 4 air" "$ow setblock 3 62 4 galacticraft:sulfuric_acid"
 # amounts in droplets (81000 per bucket) on both loaders.
 $RCON "$ow setblock 3 64 -4 galacticraft:water_electrolyzer" \
     "$ow data merge block 3 64 -4 {EnergyStorage:30000L,FluidStorage:[{Resource:\"minecraft:water\",Amount:81000L},{},{}]}" > /dev/null
+# Methane synthesizers with a bucket of hydrogen: one fed carbon fragments in the overworld, one
+# on Mars with an atmospheric valve drawing carbon dioxide from the air.
+mars="execute in galacticraft:mars run"
+hydrogen_tank="FluidStorage:[{Resource:\"galacticraft:hydrogen\",Amount:81000L},{},{}]"
+$RCON "$ow setblock 3 64 -6 galacticraft:methane_synthesizer" \
+    "$ow data merge block 3 64 -6 {EnergyStorage:30000L,$hydrogen_tank,ItemStorage:[{},{},{},{Resource:\"galacticraft:carbon_fragments\",Amount:4},{}]}" \
+    "$mars forceload add 0 0" "$mars setblock 0 200 0 galacticraft:methane_synthesizer" \
+    "$mars data merge block 0 200 0 {EnergyStorage:30000L,$hydrogen_tank,ItemStorage:[{},{},{Resource:\"galacticraft:atmospheric_valve\",Amount:1},{},{}]}" > /dev/null
 screenshot 01-machines
 
 $RCON "dimtp galacticraft:moon Tester"
@@ -146,9 +154,10 @@ fi
 
 # NBT path value of a block entity, or 0 when the path does not exist yet (machines only
 # save energy and fluids once they have some).
+# Usage: block_value <pos> <path> [execute prefix, default: the overworld]
 block_value() {
     local value
-    value=$($RCON "$ow data get block $1 $2" | sed -nE 's/^.*block data: ([0-9]+)L?$/\1/p')
+    value=$($RCON "${3:-$ow} data get block $1 $2" | sed -nE 's/^.*block data: ([0-9]+)L?$/\1/p')
     echo "${value:-0}"
 }
 geothermal=$(block_value "3 65 4" EnergyStorage)
@@ -167,6 +176,19 @@ hydrogen=$(block_value "3 64 -4" 'FluidStorage[2].Amount')
 echo "Water electrolyzer: water=$water oxygen=$oxygen hydrogen=$hydrogen"
 if ((water >= 81000 || oxygen <= 0 || hydrogen <= oxygen)); then
     fail "water electrolyzer did not turn water into oxygen and hydrogen"
+fi
+
+fragments=$(block_value "3 64 -6" 'ItemStorage[3].Amount')
+methane=$(block_value "3 64 -6" 'FluidStorage[2].Amount')
+echo "Methane synthesizer (carbon fragments): methane=$methane fragments_left=$fragments"
+if ((methane <= 0 || fragments >= 4)); then
+    fail "methane synthesizer did not make methane from carbon fragments"
+fi
+mars_co2=$(block_value "0 200 0" 'FluidStorage[1].Amount' "$mars")
+mars_methane=$(block_value "0 200 0" 'FluidStorage[2].Amount' "$mars")
+echo "Methane synthesizer (Mars atmosphere): carbon_dioxide=$mars_co2 methane=$mars_methane"
+if ((mars_methane <= 0)); then
+    fail "methane synthesizer on Mars did not make methane from atmospheric carbon dioxide"
 fi
 
 # 3x3 launch pad centred on (0, 64, 0) and a creative (fully fuelled) tier 1 rocket on it.

@@ -331,6 +331,7 @@ public interface Constant {
         String FLUID_TANK = "fluid_tank";
         String PAINTER = "painter";
         String WATER_ELECTROLYZER = "water_electrolyzer";
+        String METHANE_SYNTHESIZER = "methane_synthesizer";
         String METHANE_SYNTHESIZIER = "methane_synthesizer";
         String GAS_LIQUEFIER = "gas_liquefier";
 
@@ -667,6 +668,7 @@ public interface Constant {
         ResourceLocation SOLAR_PANEL_SCREEN = id("textures/gui/solar_panel_screen.png");
         ResourceLocation REFINERY_SCREEN = id("textures/gui/refinery_screen.png");
         ResourceLocation WATER_ELECTROLYZER_SCREEN = id("textures/gui/water_electrolyzer_screen.png");
+        ResourceLocation METHANE_SYNTHESIZER_SCREEN = id("textures/gui/methane_synthesizer_screen.png");
         ResourceLocation TERRAFORMER_SCREEN = id("textures/gui/terraformer.png");
         ResourceLocation ENERGY_STORAGE_MODULE_SCREEN = id("textures/gui/energy_storage_module_screen.png");
         ResourceLocation OXYGEN_COLLECTOR_SCREEN = id("textures/gui/oxygen_collector_screen.png");
@@ -1285,6 +1287,7 @@ public interface Constant {
         String ENERGY_STORAGE_CLUSTER_MENU = "energy_storage_cluster_menu";
         String REFINERY_MENU = "refinery_menu";
         String WATER_ELECTROLYZER_MENU = "water_electrolyzer_menu";
+        String METHANE_SYNTHESIZER_MENU = "methane_synthesizer_menu";
         String ELECTRIC_FURNACE_MENU = "electric_furnace_menu";
         String ELECTRIC_ARC_FURNACE_MENU = "electric_arc_furnace_menu";
         String OXYGEN_COLLECTOR_MENU = "oxygen_collector_menu";
@@ -1398,6 +1401,7 @@ public interface Constant {
         String COLOR = "Color";
         String PULL = "Pull";
         String HEAT = "Heat";
+        String CARBON_FRAGMENT_OPERATIONS = "CarbonFragmentOperations";
         String INPUTS = "Inputs";
         String OUTPUTS = "Outputs";
         String SHAPELESS = "Shapeless";
