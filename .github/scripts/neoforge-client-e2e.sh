@@ -1,0 +1,196 @@
+#!/usr/bin/env bash
+# End-to-end client test for the NeoForge build.
+#
+# Starts a dedicated server with RCON and a client on a virtual display that joins it,
+# then drives a short scenario through RCON and xdotool: place machines, visit the Moon,
+# summon a rocket on a launch pad and launch it. Screenshots of each step are written to
+# $E2E_OUT_DIR (default: e2e). Fails if the client or server crashes or logs errors, or if
+# the rocket does not launch.
+#
+# Requires: Xvfb (unless DISPLAY is set), xdotool, ImageMagick (import), python3.
+set -uo pipefail
+
+cd "$(dirname "$0")/../.."
+
+OUT="${E2E_OUT_DIR:-e2e}"
+RUN_DIR="neoforge/run"
+SERVER_LOG="$OUT/server.log"
+CLIENT_LOG="$OUT/client.log"
+export RCON_PORT=25575 RCON_PASSWORD=gctest
+RCON="python3 .github/scripts/rcon.py"
+
+mkdir -p "$OUT" "$RUN_DIR"
+status=0
+pids=()
+
+fail() {
+    echo "E2E FAILED: $*"
+    status=1
+}
+
+cleanup() {
+    for pid in "${pids[@]}"; do
+        kill -TERM -- "-$pid" 2>/dev/null
+    done
+    sleep 5
+    for pid in "${pids[@]}"; do
+        kill -KILL -- "-$pid" 2>/dev/null
+    done
+}
+trap cleanup EXIT
+
+# wait_for <file> <regex> <timeout-seconds>
+wait_for() {
+    local elapsed
+    for ((elapsed = 0; elapsed < $3; elapsed += 2)); do
+        grep -qE "$2" "$1" 2>/dev/null && return 0
+        sleep 2
+    done
+    return 1
+}
+
+screenshot() {
+    sleep "${2:-5}"
+    import -window root "$OUT/$1.png" && echo "Screenshot: $OUT/$1.png"
+}
+
+# Prints the value of an entity NBT path, e.g. entity_data Tester Pos[1]
+entity_data() {
+    $RCON "data get entity $1 $2" | sed -E 's/^.*entity data: //'
+}
+
+if [[ -z "${DISPLAY:-}" ]]; then
+    export DISPLAY=:99
+    setsid Xvfb "$DISPLAY" -screen 0 1280x720x24 -nolisten tcp > "$OUT/xvfb.log" 2>&1 &
+    pids+=($!)
+    sleep 2
+fi
+export LIBGL_ALWAYS_SOFTWARE=1
+
+# --- Server --------------------------------------------------------------------------------
+rm -rf "$RUN_DIR/world"
+echo "eula=true" > "$RUN_DIR/eula.txt"
+cat > "$RUN_DIR/server.properties" <<PROPS
+online-mode=false
+server-port=25599
+level-seed=galacticraft
+spawn-protection=0
+view-distance=6
+simulation-distance=6
+enable-rcon=true
+rcon.port=$RCON_PORT
+rcon.password=$RCON_PASSWORD
+PROPS
+
+setsid ./gradlew :neoforge:runServer --console=plain --no-daemon > "$SERVER_LOG" 2>&1 &
+pids+=($!)
+if ! wait_for "$SERVER_LOG" 'Done \([0-9.]+s\)!|Crash report|BUILD FAILED' 900 \
+        || ! grep -qE 'Done \([0-9.]+s\)!' "$SERVER_LOG"; then
+    fail "server did not start"
+    tail -n 80 "$SERVER_LOG"
+    exit 1
+fi
+
+# --- Client --------------------------------------------------------------------------------
+cat > "$RUN_DIR/options.txt" <<OPTIONS
+onboardAccessibility:false
+renderDistance:6
+simulationDistance:6
+pauseOnLostFocus:false
+tutorialStep:none
+skipMultiplayerWarning:true
+joinedFirstServer:true
+soundCategory_master:0.0
+OPTIONS
+
+setsid ./gradlew :neoforge:runClient -PquickPlayServer=localhost:25599 --console=plain --no-daemon > "$CLIENT_LOG" 2>&1 &
+pids+=($!)
+if ! wait_for "$SERVER_LOG" 'Tester joined the game' 1200; then
+    fail "client did not join the server"
+    tail -n 80 "$CLIENT_LOG"
+    exit 1
+fi
+
+# Keyboard input goes to the window under the pointer.
+window=$(xdotool search --name 'Minecraft' | head -1)
+eval "$(xdotool getwindowgeometry --shell "$window")"
+xdotool mousemove $((X + WIDTH / 2)) $((Y + HEIGHT / 2))
+
+# --- Scenario ------------------------------------------------------------------------------
+ow="execute in minecraft:overworld run"
+$RCON "op Tester" "gamemode creative Tester" "gamerule doDaylightCycle false" "time set day" \
+    "effect give Tester minecraft:night_vision infinite 0 true" \
+    "$ow forceload add -16 -16 16 16" "$ow tp Tester 0.5 100 0.5" \
+    "$ow fill -8 64 -8 8 90 8 air" "$ow fill -8 63 -8 8 63 8 minecraft:stone" \
+    "$ow setblock 3 64 -2 galacticraft:oxygen_collector" \
+    "$ow setblock 3 64 0 galacticraft:circuit_fabricator" \
+    "$ow setblock 3 64 2 galacticraft:basic_solar_panel" \
+    "$ow tp Tester -1.5 64 0.5 -90 15"
+screenshot 01-machines
+
+$RCON "dimtp galacticraft:moon Tester"
+screenshot 02-moon 8
+if [[ "$(entity_data Tester Dimension)" != '"galacticraft:moon"' ]]; then
+    fail "player did not reach the Moon"
+fi
+
+# 3x3 launch pad centred on (0, 64, 0) and a creative (fully fuelled) tier 1 rocket on it.
+pad=(center:0:0 north:0:-1 south:0:1 west:-1:0 east:1:0 north_west:-1:-1 north_east:1:-1 south_west:-1:1 south_east:1:1)
+for part in "${pad[@]}"; do
+    IFS=: read -r name dx dz <<< "$part"
+    $RCON "$ow setblock $dx 64 $dz galacticraft:rocket_launch_pad[part=$name]" > /dev/null
+done
+tier1='engine:"galacticraft:tier_1",fin:"galacticraft:tier_1",body:"galacticraft:tier_1",cone:"galacticraft:tier_1"'
+$RCON "$ow tp Tester -4.5 64 0.5 -90 10" \
+    "$ow summon galacticraft:rocket 0.5 64.1875 0.5 {Creative:1b,data:{$tier1}}" \
+    "$ow ride Tester mount @e[type=galacticraft:rocket,limit=1]"
+screenshot 03-rocket-on-pad
+
+# Two presses of jump: the first arms the launch, the second ignites it.
+for _ in 1 2; do
+    xdotool keydown space
+    sleep 0.3
+    xdotool keyup space
+    sleep 1
+done
+
+launched=0
+for ((elapsed = 0; elapsed < 120; elapsed += 5)); do
+    sleep 5
+    height=$(entity_data Tester 'Pos[1]' | tr -d 'd')
+    echo "t=${elapsed}s player y=$height"
+    if [[ "$height" =~ ^[0-9.]+$ ]] && (($(printf '%.0f' "$height") > 300)); then
+        launched=1
+        break
+    fi
+done
+screenshot 04-flight 1
+if ((launched == 0)); then
+    fail "rocket did not launch"
+fi
+
+# The celestial selection screen opens once the rocket leaves the atmosphere.
+for ((elapsed = 0; elapsed < 120; elapsed += 5)); do
+    [[ "$($RCON "$ow execute if entity @e[type=galacticraft:rocket]")" == *"Test passed"* ]] || break
+    sleep 5
+done
+screenshot 05-celestial-screen 5
+
+# --- Checks --------------------------------------------------------------------------------
+if grep -qE 'Crash report|---- Minecraft Crash' "$CLIENT_LOG" "$SERVER_LOG"; then
+    fail "crash report found"
+fi
+# The virtual display has no audio device, so sound engine errors are expected.
+client_errors=$(grep -E '/ERROR\]' "$CLIENT_LOG" | grep -vE 'SoundEngine|OpenAL' || true)
+server_errors=$(grep -E '/ERROR\]' "$SERVER_LOG" || true)
+if [[ -n "$client_errors" ]]; then
+    fail "client logged errors"
+    echo "$client_errors" | head -50
+fi
+if [[ -n "$server_errors" ]]; then
+    fail "server logged errors"
+    echo "$server_errors" | head -50
+fi
+
+((status == 0)) && echo "E2E PASSED"
+exit "$status"

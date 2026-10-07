@@ -153,6 +153,10 @@ loom {
     runs {
         named("client") {
             name("NeoForge Client")
+            // Used by the CI client test: -PquickPlayServer=host:port joins that server on startup.
+            (project.findProperty("quickPlayServer") as String?)?.let {
+                programArgs("--quickPlayMultiplayer", it, "--username", "Tester")
+            }
         }
         named("server") {
             name("NeoForge Server")
