@@ -45,6 +45,7 @@ public final class GCApiLookupProviders {
                 GCBlockEntityTypes.ELECTRIC_FURNACE,
                 GCBlockEntityTypes.ELECTRIC_ARC_FURNACE,
                 GCBlockEntityTypes.REFINERY,
+                GCBlockEntityTypes.WATER_ELECTROLYZER,
                 GCBlockEntityTypes.FUEL_LOADER,
                 GCBlockEntityTypes.CARGO_LOADER,
                 GCBlockEntityTypes.CARGO_UNLOADER,

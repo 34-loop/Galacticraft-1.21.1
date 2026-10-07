@@ -347,6 +347,7 @@ public final class GCNeoForgeClient {
         event.register(GCMenuTypes.GEOTHERMAL_GENERATOR, GeothermalGeneratorScreen::new);
         event.register(GCMenuTypes.CIRCUIT_FABRICATOR, CircuitFabricatorScreen::new);
         event.register(GCMenuTypes.REFINERY, RefineryScreen::new);
+        event.register(GCMenuTypes.WATER_ELECTROLYZER, WaterElectrolyzerScreen::new);
         event.register(GCMenuTypes.ELECTRIC_FURNACE, ElectricFurnaceScreen::new);
         event.register(GCMenuTypes.ELECTRIC_ARC_FURNACE, ElectricArcFurnaceScreen::new);
         event.register(GCMenuTypes.COMPRESSOR, CompressorScreen::new);

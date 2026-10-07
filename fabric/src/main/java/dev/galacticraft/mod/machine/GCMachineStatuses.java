@@ -71,6 +71,7 @@ public final class GCMachineStatuses {
 
     // Refinery
     public static final MachineStatus REFINING = MachineStatus.create(Translations.MachineStatus.REFINING, ChatFormatting.GREEN, MachineStatus.Type.WORKING);
+    public static final MachineStatus ELECTROLYZING = MachineStatus.create(Translations.MachineStatus.ELECTROLYZING, ChatFormatting.GREEN, MachineStatus.Type.WORKING);
     public static final MachineStatus MISSING_OIL = MachineStatus.create(Translations.MachineStatus.MISSING_OIL, ChatFormatting.RED, MachineStatus.Type.MISSING_FLUIDS);
     public static final MachineStatus FUEL_TANK_FULL = MachineStatus.create(Translations.MachineStatus.FUEL_TANK_FULL, ChatFormatting.GOLD, MachineStatus.Type.OTHER);
 

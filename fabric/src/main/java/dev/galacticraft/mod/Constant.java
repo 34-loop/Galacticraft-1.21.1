@@ -666,6 +666,7 @@ public interface Constant {
         ResourceLocation GEOTHERMAL_GENERATOR_SCREEN = id("textures/gui/geothermal_generator_screen.png");
         ResourceLocation SOLAR_PANEL_SCREEN = id("textures/gui/solar_panel_screen.png");
         ResourceLocation REFINERY_SCREEN = id("textures/gui/refinery_screen.png");
+        ResourceLocation WATER_ELECTROLYZER_SCREEN = id("textures/gui/water_electrolyzer_screen.png");
         ResourceLocation TERRAFORMER_SCREEN = id("textures/gui/terraformer.png");
         ResourceLocation ENERGY_STORAGE_MODULE_SCREEN = id("textures/gui/energy_storage_module_screen.png");
         ResourceLocation OXYGEN_COLLECTOR_SCREEN = id("textures/gui/oxygen_collector_screen.png");
@@ -1283,6 +1284,7 @@ public interface Constant {
         String ENERGY_STORAGE_MODULE_MENU = "energy_storage_module_menu";
         String ENERGY_STORAGE_CLUSTER_MENU = "energy_storage_cluster_menu";
         String REFINERY_MENU = "refinery_menu";
+        String WATER_ELECTROLYZER_MENU = "water_electrolyzer_menu";
         String ELECTRIC_FURNACE_MENU = "electric_furnace_menu";
         String ELECTRIC_ARC_FURNACE_MENU = "electric_arc_furnace_menu";
         String OXYGEN_COLLECTOR_MENU = "oxygen_collector_menu";

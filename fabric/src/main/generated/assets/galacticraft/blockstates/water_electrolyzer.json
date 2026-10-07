@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "galacticraft:machine/water_electrolyzer"
+    },
+    "active=true": {
+      "model": "galacticraft:machine/water_electrolyzer_active"
+    }
+  }
+}

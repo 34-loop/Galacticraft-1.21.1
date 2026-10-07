@@ -56,6 +56,7 @@ public class GCBlockEntityTypes {
     public static final BlockEntityType<ElectricFurnaceBlockEntity> ELECTRIC_FURNACE = register(Constant.Block.ELECTRIC_FURNACE, ElectricFurnaceBlockEntity::new, GCBlocks.ELECTRIC_FURNACE);
     public static final BlockEntityType<ElectricArcFurnaceBlockEntity> ELECTRIC_ARC_FURNACE = register(Constant.Block.ELECTRIC_ARC_FURNACE, ElectricArcFurnaceBlockEntity::new, GCBlocks.ELECTRIC_ARC_FURNACE);
     public static final BlockEntityType<RefineryBlockEntity> REFINERY = register(Constant.Block.REFINERY, RefineryBlockEntity::new, GCBlocks.REFINERY);
+    public static final BlockEntityType<WaterElectrolyzerBlockEntity> WATER_ELECTROLYZER = register(Constant.Block.WATER_ELECTROLYZER, WaterElectrolyzerBlockEntity::new, GCBlocks.WATER_ELECTROLYZER);
     public static final BlockEntityType<FoodCannerBlockEntity> FOOD_CANNER = register(Constant.Block.FOOD_CANNER, FoodCannerBlockEntity::new, GCBlocks.FOOD_CANNER);
 
     // OXYGEN MACHINES

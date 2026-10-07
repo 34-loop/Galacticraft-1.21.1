@@ -132,6 +132,9 @@ $RCON "op Tester" "gamemode creative Tester" "gamerule doDaylightCycle false" "t
 $RCON "$ow setblock 3 63 4 air" "$ow setblock 3 62 4 galacticraft:sulfuric_acid" \
     "$ow setblock 3 64 4 galacticraft:vapor_spout" "$ow setblock 3 65 4 galacticraft:geothermal_generator" \
     "$ow setblock 3 64 6 galacticraft:geothermal_generator" > /dev/null
+# Water electrolyzer preloaded with water and energy (fluid amounts are in millibuckets on NeoForge).
+$RCON "$ow setblock 3 64 -4 galacticraft:water_electrolyzer" \
+    "$ow data merge block 3 64 -4 {EnergyStorage:30000L,FluidStorage:[{Resource:\"minecraft:water\",Amount:2000L},{},{}]}" > /dev/null
 screenshot 01-machines
 
 $RCON "dimtp galacticraft:moon Tester"
@@ -140,20 +143,29 @@ if [[ "$(entity_data Tester Dimension)" != '"galacticraft:moon"' ]]; then
     fail "player did not reach the Moon"
 fi
 
-# Machines only report energy once they have some, so a missing value counts as zero.
-block_energy() {
+# NBT path value of a block entity, or 0 when the path does not exist yet (machines only
+# save energy and fluids once they have some).
+block_value() {
     local value
-    value=$($RCON "$ow data get block $1 EnergyStorage" | sed -nE 's/^.*block data: ([0-9]+)L?$/\1/p')
+    value=$($RCON "$ow data get block $1 $2" | sed -nE 's/^.*block data: ([0-9]+)L?$/\1/p')
     echo "${value:-0}"
 }
-geothermal=$(block_energy "3 65 4")
-control=$(block_energy "3 64 6")
+geothermal=$(block_value "3 65 4" EnergyStorage)
+control=$(block_value "3 64 6" EnergyStorage)
 echo "Geothermal generator energy: on spout=$geothermal, without spout=$control"
 if ((geothermal <= 0)); then
     fail "geothermal generator on a vapor spout produced no energy"
 fi
 if ((control != 0)); then
     fail "geothermal generator without a vapor spout produced energy"
+fi
+
+water=$(block_value "3 64 -4" 'FluidStorage[0].Amount')
+oxygen=$(block_value "3 64 -4" 'FluidStorage[1].Amount')
+hydrogen=$(block_value "3 64 -4" 'FluidStorage[2].Amount')
+echo "Water electrolyzer: water=$water oxygen=$oxygen hydrogen=$hydrogen"
+if ((water >= 2000 || oxygen <= 0 || hydrogen <= oxygen)); then
+    fail "water electrolyzer did not turn water into oxygen and hydrogen"
 fi
 
 # 3x3 launch pad centred on (0, 64, 0) and a creative (fully fuelled) tier 1 rocket on it.

@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "galacticraft:compressed_copper"
+    },
+    "F": {
+      "item": "galacticraft:glass_fluid_pipe"
+    },
+    "M": {
+      "item": "galacticraft:fluid_manipulator"
+    },
+    "T": {
+      "item": "galacticraft:large_oxygen_tank"
+    },
+    "V": {
+      "item": "galacticraft:oxygen_vent"
+    },
+    "X": {
+      "item": "galacticraft:compressed_bronze"
+    }
+  },
+  "pattern": [
+    "TVT",
+    "FMF",
+    "CXC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "galacticraft:water_electrolyzer"
+  }
+}

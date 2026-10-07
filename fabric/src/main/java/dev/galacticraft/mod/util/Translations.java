@@ -440,6 +440,7 @@ public interface Translations {
         String NO_VALID_TREE_BLOCKS = "ui.galacticraft.status.no_valid_tree_blocks";
         String NO_VALID_GRASS_BLOCKS = "ui.galacticraft.status.no_valid_grass_blocks";
         String REFINING = "ui.galacticraft.status.refining";
+        String ELECTROLYZING = "ui.galacticraft.status.electrolyzing";
         String MISSING_OIL = "ui.galacticraft.status.missing_oil";
         String FUEL_TANK_FULL = "ui.galacticraft.status.fuel_tank_full";
         String PREPARING = "ui.galacticraft.status.preparing";
