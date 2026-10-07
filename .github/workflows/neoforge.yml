@@ -1,0 +1,89 @@
+name: NeoForge Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+env:
+  # Library forks the NeoForge module is built against. The Galacticraft build
+  # picks them up from ../MachineLib and ../DynamicDimensions.
+  MACHINELIB_REPO: 34-loop/MachineLib
+  MACHINELIB_REF: feat/architectury-multiloader
+  DYNAMICDIMENSIONS_REPO: 34-loop/DynamicDimensions
+  DYNAMICDIMENSIONS_REF: fix/neoforge-runtime-dimension-lifecycle
+
+jobs:
+  neoforge:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Checkout Galacticraft
+        uses: actions/checkout@v6
+        with:
+          path: Galacticraft
+
+      - name: Checkout MachineLib
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ env.MACHINELIB_REPO }}
+          ref: ${{ env.MACHINELIB_REF }}
+          path: MachineLib
+
+      - name: Checkout DynamicDimensions
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ env.DYNAMICDIMENSIONS_REPO }}
+          ref: ${{ env.DYNAMICDIMENSIONS_REF }}
+          path: DynamicDimensions
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: 21
+          distribution: temurin
+
+      - name: Cache Gradle
+        uses: actions/cache@v5
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-neoforge-gradle-${{ hashFiles('**/gradle-wrapper.properties', '**/*.gradle.kts', '**/gradle.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-neoforge-gradle-
+
+      - name: Build MachineLib
+        working-directory: MachineLib
+        run: ./gradlew :fabric:build :neoforge:build -x test --console=plain
+
+      - name: Build DynamicDimensions
+        working-directory: DynamicDimensions
+        run: ./gradlew :fabric:build :neoforge:build -x test --console=plain
+
+      - name: Build Galacticraft (NeoForge)
+        working-directory: Galacticraft
+        run: ./gradlew :neoforge:build -x test --console=plain
+
+      - name: Dedicated server smoke test
+        working-directory: Galacticraft
+        run: .github/scripts/neoforge-server-smoke.sh
+
+      - name: Upload server log
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: neoforge-server-smoke-log
+          path: Galacticraft/neoforge-server-smoke.log
+          if-no-files-found: ignore
+
+      - name: Upload NeoForge jar
+        uses: actions/upload-artifact@v7
+        with:
+          name: galacticraft-neoforge
+          path: |
+            Galacticraft/neoforge/build/libs/Galacticraft-neoforge-*.jar
+            !Galacticraft/neoforge/build/libs/*-sources.jar
+            !Galacticraft/neoforge/build/libs/*-javadoc.jar
+            !Galacticraft/neoforge/build/libs/*-dev-shadow.jar
+          if-no-files-found: error
