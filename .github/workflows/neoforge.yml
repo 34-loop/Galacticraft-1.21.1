@@ -69,12 +69,29 @@ jobs:
         working-directory: Galacticraft
         run: .github/scripts/neoforge-server-smoke.sh
 
+      - name: Install client test tools
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q xvfb xdotool imagemagick libgl1-mesa-dri
+
+      - name: Client end-to-end test
+        working-directory: Galacticraft
+        run: .github/scripts/neoforge-client-e2e.sh
+
       - name: Upload server log
         if: ${{ always() }}
         uses: actions/upload-artifact@v7
         with:
           name: neoforge-server-smoke-log
           path: Galacticraft/neoforge-server-smoke.log
+          if-no-files-found: ignore
+
+      - name: Upload client test screenshots and logs
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: neoforge-client-e2e
+          path: Galacticraft/e2e/
           if-no-files-found: ignore
 
       - name: Upload NeoForge jar
