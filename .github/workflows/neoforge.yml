@@ -65,6 +65,10 @@ jobs:
         working-directory: Galacticraft
         run: ./gradlew :neoforge:build -x test --console=plain
 
+      - name: Fabric build and code checks
+        working-directory: Galacticraft
+        run: ./gradlew spotlessCheck pmdMain :fabric:assemble --console=plain
+
       - name: Dedicated server smoke test
         working-directory: Galacticraft
         run: .github/scripts/neoforge-server-smoke.sh

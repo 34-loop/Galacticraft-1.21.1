@@ -6,6 +6,9 @@ on:
 
 jobs:
   build:
+    # Forks cannot resolve MachineLib from repo.terradevelopment.net; neoforge.yml builds the
+    # libraries from source and runs these checks there instead.
+    if: github.repository == 'TeamGalacticraft/Galacticraft'
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
