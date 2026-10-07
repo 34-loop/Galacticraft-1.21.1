@@ -1288,6 +1288,7 @@ public interface Constant {
         String REFINERY_MENU = "refinery_menu";
         String WATER_ELECTROLYZER_MENU = "water_electrolyzer_menu";
         String METHANE_SYNTHESIZER_MENU = "methane_synthesizer_menu";
+        String GAS_LIQUEFIER_MENU = "gas_liquefier_menu";
         String ELECTRIC_FURNACE_MENU = "electric_furnace_menu";
         String ELECTRIC_ARC_FURNACE_MENU = "electric_arc_furnace_menu";
         String OXYGEN_COLLECTOR_MENU = "oxygen_collector_menu";

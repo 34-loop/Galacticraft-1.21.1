@@ -349,6 +349,7 @@ public final class GCNeoForgeClient {
         event.register(GCMenuTypes.REFINERY, RefineryScreen::new);
         event.register(GCMenuTypes.WATER_ELECTROLYZER, WaterElectrolyzerScreen::new);
         event.register(GCMenuTypes.METHANE_SYNTHESIZER, MethaneSynthesizerScreen::new);
+        event.register(GCMenuTypes.GAS_LIQUEFIER, GasLiquefierScreen::new);
         event.register(GCMenuTypes.ELECTRIC_FURNACE, ElectricFurnaceScreen::new);
         event.register(GCMenuTypes.ELECTRIC_ARC_FURNACE, ElectricArcFurnaceScreen::new);
         event.register(GCMenuTypes.COMPRESSOR, CompressorScreen::new);

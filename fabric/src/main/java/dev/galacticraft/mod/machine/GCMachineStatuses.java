@@ -73,6 +73,8 @@ public final class GCMachineStatuses {
     public static final MachineStatus REFINING = MachineStatus.create(Translations.MachineStatus.REFINING, ChatFormatting.GREEN, MachineStatus.Type.WORKING);
     public static final MachineStatus ELECTROLYZING = MachineStatus.create(Translations.MachineStatus.ELECTROLYZING, ChatFormatting.GREEN, MachineStatus.Type.WORKING);
     public static final MachineStatus SYNTHESIZING = MachineStatus.create(Translations.MachineStatus.SYNTHESIZING, ChatFormatting.GREEN, MachineStatus.Type.WORKING);
+    public static final MachineStatus LIQUEFYING = MachineStatus.create(Translations.MachineStatus.LIQUEFYING, ChatFormatting.GREEN, MachineStatus.Type.WORKING);
+    public static final MachineStatus NOT_ENOUGH_GAS = MachineStatus.create(Translations.MachineStatus.NOT_ENOUGH_GAS, ChatFormatting.RED, MachineStatus.Type.MISSING_FLUIDS);
     public static final MachineStatus NOT_ENOUGH_HYDROGEN = MachineStatus.create(Translations.MachineStatus.NOT_ENOUGH_HYDROGEN, ChatFormatting.RED, MachineStatus.Type.MISSING_FLUIDS);
     public static final MachineStatus NOT_ENOUGH_CARBON = MachineStatus.create(Translations.MachineStatus.NOT_ENOUGH_CARBON, ChatFormatting.RED, MachineStatus.Type.MISSING_RESOURCE);
     public static final MachineStatus MISSING_OIL = MachineStatus.create(Translations.MachineStatus.MISSING_OIL, ChatFormatting.RED, MachineStatus.Type.MISSING_FLUIDS);

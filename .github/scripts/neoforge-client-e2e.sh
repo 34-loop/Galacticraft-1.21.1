@@ -144,6 +144,12 @@ $RCON "$ow setblock 3 64 -6 galacticraft:methane_synthesizer" \
     "$ow data merge block 3 64 -6 {EnergyStorage:30000L,$hydrogen_tank,ItemStorage:[{},{},{},{Resource:\"galacticraft:carbon_fragments\",Amount:4},{}]}" \
     "$mars forceload add 0 0" "$mars setblock 0 200 0 galacticraft:methane_synthesizer" \
     "$mars data merge block 0 200 0 {EnergyStorage:30000L,$hydrogen_tank,ItemStorage:[{},{},{Resource:\"galacticraft:atmospheric_valve\",Amount:1},{},{}]}" > /dev/null
+# Gas liquefiers: one with methane (becomes fuel) and one with oxygen (becomes liquid oxygen).
+for liquefier in "3 64 -8 methane" "5 64 -8 oxygen"; do
+    read -r x y z gas <<< "$liquefier"
+    $RCON "$ow setblock $x $y $z galacticraft:gas_liquefier" \
+        "$ow data merge block $x $y $z {EnergyStorage:30000L,FluidStorage:[{Resource:\"galacticraft:$gas\",Amount:81000L},{}]}" > /dev/null
+done
 screenshot 01-machines
 
 $RCON "dimtp galacticraft:moon Tester"
@@ -190,6 +196,16 @@ echo "Methane synthesizer (Mars atmosphere): carbon_dioxide=$mars_co2 methane=$m
 if ((mars_methane <= 0)); then
     fail "methane synthesizer on Mars did not make methane from atmospheric carbon dioxide"
 fi
+
+for liquefier in "3 64 -8 galacticraft:fuel" "5 64 -8 galacticraft:liquid_oxygen"; do
+    read -r x y z liquid <<< "$liquefier"
+    amount=$(block_value "$x $y $z" 'FluidStorage[1].Amount')
+    produced=$($RCON "$ow data get block $x $y $z FluidStorage[1].Resource" | sed -nE 's/^.*block data: "(.*)"$/\1/p')
+    echo "Gas liquefier at $x $y $z: $amount of $produced"
+    if ((amount <= 0)) || [[ "$produced" != *"$liquid"* ]]; then
+        fail "gas liquefier at $x $y $z did not produce $liquid"
+    fi
+done
 
 # 3x3 launch pad centred on (0, 64, 0) and a creative (fully fuelled) tier 1 rocket on it.
 pad=(center:0:0 north:0:-1 south:0:1 west:-1:0 east:1:0 north_west:-1:-1 north_east:1:-1 south_west:-1:1 south_east:1:1)

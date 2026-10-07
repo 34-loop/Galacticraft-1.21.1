@@ -442,6 +442,8 @@ public interface Translations {
         String REFINING = "ui.galacticraft.status.refining";
         String ELECTROLYZING = "ui.galacticraft.status.electrolyzing";
         String SYNTHESIZING = "ui.galacticraft.status.synthesizing";
+        String LIQUEFYING = "ui.galacticraft.status.liquefying";
+        String NOT_ENOUGH_GAS = "ui.galacticraft.status.not_enough_gas";
         String NOT_ENOUGH_HYDROGEN = "ui.galacticraft.status.not_enough_hydrogen";
         String NOT_ENOUGH_CARBON = "ui.galacticraft.status.not_enough_carbon";
         String MISSING_OIL = "ui.galacticraft.status.missing_oil";

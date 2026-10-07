@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "galacticraft:machine/gas_liquefier"
+    },
+    "active=true": {
+      "model": "galacticraft:machine/gas_liquefier_active"
+    }
+  }
+}

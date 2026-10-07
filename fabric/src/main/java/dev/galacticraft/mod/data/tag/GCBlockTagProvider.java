@@ -479,6 +479,7 @@ public class GCBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 GCBlocks.REFINERY,
                 GCBlocks.WATER_ELECTROLYZER,
                 GCBlocks.METHANE_SYNTHESIZER,
+                GCBlocks.GAS_LIQUEFIER,
                 GCBlocks.FUEL_LOADER,
                 GCBlocks.CARGO_LOADER,
                 GCBlocks.CARGO_UNLOADER,

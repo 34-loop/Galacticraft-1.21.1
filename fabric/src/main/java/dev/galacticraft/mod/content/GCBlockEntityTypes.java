@@ -58,6 +58,7 @@ public class GCBlockEntityTypes {
     public static final BlockEntityType<RefineryBlockEntity> REFINERY = register(Constant.Block.REFINERY, RefineryBlockEntity::new, GCBlocks.REFINERY);
     public static final BlockEntityType<WaterElectrolyzerBlockEntity> WATER_ELECTROLYZER = register(Constant.Block.WATER_ELECTROLYZER, WaterElectrolyzerBlockEntity::new, GCBlocks.WATER_ELECTROLYZER);
     public static final BlockEntityType<MethaneSynthesizerBlockEntity> METHANE_SYNTHESIZER = register(Constant.Block.METHANE_SYNTHESIZER, MethaneSynthesizerBlockEntity::new, GCBlocks.METHANE_SYNTHESIZER);
+    public static final BlockEntityType<GasLiquefierBlockEntity> GAS_LIQUEFIER = register(Constant.Block.GAS_LIQUEFIER, GasLiquefierBlockEntity::new, GCBlocks.GAS_LIQUEFIER);
     public static final BlockEntityType<FoodCannerBlockEntity> FOOD_CANNER = register(Constant.Block.FOOD_CANNER, FoodCannerBlockEntity::new, GCBlocks.FOOD_CANNER);
 
     // OXYGEN MACHINES
