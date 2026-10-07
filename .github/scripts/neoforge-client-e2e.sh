@@ -132,9 +132,10 @@ $RCON "op Tester" "gamemode creative Tester" "gamerule doDaylightCycle false" "t
 $RCON "$ow setblock 3 63 4 air" "$ow setblock 3 62 4 galacticraft:sulfuric_acid" \
     "$ow setblock 3 64 4 galacticraft:vapor_spout" "$ow setblock 3 65 4 galacticraft:geothermal_generator" \
     "$ow setblock 3 64 6 galacticraft:geothermal_generator" > /dev/null
-# Water electrolyzer preloaded with water and energy (fluid amounts are in millibuckets on NeoForge).
+# Water electrolyzer preloaded with one bucket of water and energy. MachineLib saves fluid
+# amounts in droplets (81000 per bucket) on both loaders.
 $RCON "$ow setblock 3 64 -4 galacticraft:water_electrolyzer" \
-    "$ow data merge block 3 64 -4 {EnergyStorage:30000L,FluidStorage:[{Resource:\"minecraft:water\",Amount:2000L},{},{}]}" > /dev/null
+    "$ow data merge block 3 64 -4 {EnergyStorage:30000L,FluidStorage:[{Resource:\"minecraft:water\",Amount:81000L},{},{}]}" > /dev/null
 screenshot 01-machines
 
 $RCON "dimtp galacticraft:moon Tester"
@@ -164,7 +165,7 @@ water=$(block_value "3 64 -4" 'FluidStorage[0].Amount')
 oxygen=$(block_value "3 64 -4" 'FluidStorage[1].Amount')
 hydrogen=$(block_value "3 64 -4" 'FluidStorage[2].Amount')
 echo "Water electrolyzer: water=$water oxygen=$oxygen hydrogen=$hydrogen"
-if ((water >= 2000 || oxygen <= 0 || hydrogen <= oxygen)); then
+if ((water >= 81000 || oxygen <= 0 || hydrogen <= oxygen)); then
     fail "water electrolyzer did not turn water into oxygen and hydrogen"
 fi
 
