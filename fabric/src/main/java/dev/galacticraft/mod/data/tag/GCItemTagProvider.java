@@ -309,6 +309,10 @@ public class GCItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(GCItems.TITANIUM_INGOT);
         this.tag(GCItemTags.LEAD_INGOTS)
                 .add(GCItems.LEAD_INGOT);
+        // Galacticraft adds no bronze or steel ingots. Declare the tags so the compressor
+        // recipes resolve without warnings and other mods can fill them.
+        this.tag(GCItemTags.BRONZE_INGOTS);
+        this.tag(GCItemTags.STEEL_INGOTS);
         this.tag(ConventionalItemTags.INGOTS)
                 .addTag(GCItemTags.TIN_INGOTS)
                 .addTag(GCItemTags.ALUMINUM_INGOTS)
