@@ -344,6 +344,7 @@ public final class GCNeoForgeClient {
         event.register(GCMenuTypes.BASIC_SOLAR_PANEL, BasicSolarPanelScreen::new);
         event.register(GCMenuTypes.ADVANCED_SOLAR_PANEL, AdvancedSolarPanelScreen::new);
         event.register(GCMenuTypes.COAL_GENERATOR, CoalGeneratorScreen::new);
+        event.register(GCMenuTypes.GEOTHERMAL_GENERATOR, GeothermalGeneratorScreen::new);
         event.register(GCMenuTypes.CIRCUIT_FABRICATOR, CircuitFabricatorScreen::new);
         event.register(GCMenuTypes.REFINERY, RefineryScreen::new);
         event.register(GCMenuTypes.ELECTRIC_FURNACE, ElectricFurnaceScreen::new);

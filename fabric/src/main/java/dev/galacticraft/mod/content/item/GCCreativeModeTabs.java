@@ -298,6 +298,7 @@ public class GCCreativeModeTabs {
                 output.accept(COMPRESSOR);
                 output.accept(ELECTRIC_COMPRESSOR);
                 output.accept(COAL_GENERATOR);
+                output.accept(GEOTHERMAL_GENERATOR);
                 output.accept(BASIC_SOLAR_PANEL);
                 output.accept(ADVANCED_SOLAR_PANEL);
                 output.accept(ENERGY_STORAGE_MODULE);

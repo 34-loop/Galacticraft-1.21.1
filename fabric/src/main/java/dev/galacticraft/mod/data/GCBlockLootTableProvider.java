@@ -341,6 +341,7 @@ public class GCBlockLootTableProvider extends FabricBlockLootTableProvider {
         this.dropSelf(GCBlocks.COMPRESSOR);
         this.dropSelf(GCBlocks.ELECTRIC_COMPRESSOR);
         this.dropSelf(GCBlocks.COAL_GENERATOR);
+        this.dropSelf(GCBlocks.GEOTHERMAL_GENERATOR);
         this.dropSelf(GCBlocks.BASIC_SOLAR_PANEL);
         this.dropSelf(GCBlocks.ADVANCED_SOLAR_PANEL);
         this.dropSelf(GCBlocks.ENERGY_STORAGE_MODULE);

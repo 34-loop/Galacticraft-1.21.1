@@ -332,6 +332,8 @@ public class GCModelProvider extends FabricModelProvider {
                 "_warming", "_cooling", "_active"
         });
 
+        createGeothermalGenerator(generator, GCBlocks.GEOTHERMAL_GENERATOR);
+
         createFoodCanner(generator, GCBlocks.FOOD_CANNER, new String[]{
                 "_empty", "_active"
         });
@@ -449,6 +451,18 @@ public class GCModelProvider extends FabricModelProvider {
                 .select(false, true, Variant.variant().with(VariantProperties.MODEL, model_location[2]))
                 .select(true, true, Variant.variant().with(VariantProperties.MODEL, model_location[3]))
         ));
+    }
+
+    private static void createGeothermalGenerator(BlockModelGenerators generator, Block block) {
+        String front = TextureMapping.getBlockTexture(block).getPath();
+        TextureProvider inactive = TextureProvider.builder(Constant.MOD_ID).sides("block/machine_side").top(front + "_top").front(front).build();
+        TextureProvider active = TextureProvider.builder(Constant.MOD_ID).sides("block/machine_side").top(front + "_top").front(front + "_active").build();
+        MachineModelGenerator.generateMachineItemModel(generator, block, inactive);
+
+        ResourceLocation inactiveModel = MachineModelGenerator.generateMachineModel(generator, MachineModelGenerator.getMachineModelLocation(block), inactive);
+        ResourceLocation activeModel = MachineModelGenerator.generateMachineModel(generator, MachineModelGenerator.getMachineModelLocation(block, "_active"), active);
+        generator.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(PropertyDispatch.property(MachineBlock.ACTIVE)
+                .generate(isActive -> Variant.variant().with(VariantProperties.MODEL, isActive ? activeModel : inactiveModel))));
     }
 
     private static void createCompressor(BlockModelGenerators generator, Block block, String[] state) {

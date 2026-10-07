@@ -36,6 +36,7 @@ public final class GCApiLookupProviders {
     public static void register() {
         MachineBlockEntity.registerProviders(new BlockEntityType[]{
                 GCBlockEntityTypes.COAL_GENERATOR,
+                GCBlockEntityTypes.GEOTHERMAL_GENERATOR,
                 GCBlockEntityTypes.BASIC_SOLAR_PANEL,
                 GCBlockEntityTypes.ADVANCED_SOLAR_PANEL,
                 GCBlockEntityTypes.CIRCUIT_FABRICATOR,

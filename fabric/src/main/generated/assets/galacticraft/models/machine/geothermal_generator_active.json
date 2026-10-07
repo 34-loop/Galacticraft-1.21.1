@@ -1,0 +1,11 @@
+{
+  "data": {
+    "back": "galacticraft:block/machine_side",
+    "front": "galacticraft:block/geothermal_generator_active",
+    "left": "galacticraft:block/machine_side",
+    "right": "galacticraft:block/machine_side",
+    "top": "galacticraft:block/geothermal_generator_top"
+  },
+  "loader": "machinelib:machine",
+  "machinelib:type": "machine"
+}

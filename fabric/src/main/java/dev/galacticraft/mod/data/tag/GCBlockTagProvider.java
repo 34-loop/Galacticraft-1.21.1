@@ -468,6 +468,7 @@ public class GCBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 GCBlocks.COMPRESSOR,
                 GCBlocks.ELECTRIC_COMPRESSOR,
                 GCBlocks.COAL_GENERATOR,
+                GCBlocks.GEOTHERMAL_GENERATOR,
                 GCBlocks.BASIC_SOLAR_PANEL,
                 GCBlocks.ADVANCED_SOLAR_PANEL,
                 GCBlocks.ENERGY_STORAGE_MODULE,

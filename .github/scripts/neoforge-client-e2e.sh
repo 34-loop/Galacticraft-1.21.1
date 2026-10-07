@@ -126,12 +126,34 @@ $RCON "op Tester" "gamemode creative Tester" "gamerule doDaylightCycle false" "t
     "$ow setblock 3 64 0 galacticraft:circuit_fabricator" \
     "$ow setblock 3 64 2 galacticraft:basic_solar_panel" \
     "$ow tp Tester -1.5 64 0.5 -90 15"
+
+# Geothermal generator on a vapor spout with sulfuric acid two blocks below, and a control
+# generator on plain stone that must not produce anything.
+$RCON "$ow setblock 3 63 4 air" "$ow setblock 3 62 4 galacticraft:sulfuric_acid" \
+    "$ow setblock 3 64 4 galacticraft:vapor_spout" "$ow setblock 3 65 4 galacticraft:geothermal_generator" \
+    "$ow setblock 3 64 6 galacticraft:geothermal_generator" > /dev/null
 screenshot 01-machines
 
 $RCON "dimtp galacticraft:moon Tester"
 screenshot 02-moon 8
 if [[ "$(entity_data Tester Dimension)" != '"galacticraft:moon"' ]]; then
     fail "player did not reach the Moon"
+fi
+
+# Machines only report energy once they have some, so a missing value counts as zero.
+block_energy() {
+    local value
+    value=$($RCON "$ow data get block $1 EnergyStorage" | sed -nE 's/^.*block data: ([0-9]+)L?$/\1/p')
+    echo "${value:-0}"
+}
+geothermal=$(block_energy "3 65 4")
+control=$(block_energy "3 64 6")
+echo "Geothermal generator energy: on spout=$geothermal, without spout=$control"
+if ((geothermal <= 0)); then
+    fail "geothermal generator on a vapor spout produced no energy"
+fi
+if ((control != 0)); then
+    fail "geothermal generator without a vapor spout produced energy"
 fi
 
 # 3x3 launch pad centred on (0, 64, 0) and a creative (fully fuelled) tier 1 rocket on it.

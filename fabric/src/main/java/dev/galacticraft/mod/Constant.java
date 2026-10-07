@@ -663,6 +663,7 @@ public interface Constant {
 
     interface ScreenTexture {
         ResourceLocation COAL_GENERATOR_SCREEN = id("textures/gui/coal_generator_screen.png");
+        ResourceLocation GEOTHERMAL_GENERATOR_SCREEN = id("textures/gui/geothermal_generator_screen.png");
         ResourceLocation SOLAR_PANEL_SCREEN = id("textures/gui/solar_panel_screen.png");
         ResourceLocation REFINERY_SCREEN = id("textures/gui/refinery_screen.png");
         ResourceLocation TERRAFORMER_SCREEN = id("textures/gui/terraformer.png");
@@ -1271,6 +1272,7 @@ public interface Constant {
 
     interface Menu {
         String COAL_GENERATOR_MENU = "coal_generator_menu";
+        String GEOTHERMAL_GENERATOR_MENU = "geothermal_generator_menu";
         String BASIC_SOLAR_PANEL_MENU = "basic_solar_panel_menu";
         String ADVANCED_SOLAR_PANEL_MENU = "advanced_solar_panel_menu";
         String CIRCUIT_FABRICATOR_MENU = "circuit_fabricator_menu";

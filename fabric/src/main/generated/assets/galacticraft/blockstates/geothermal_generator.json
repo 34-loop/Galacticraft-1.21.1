@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "galacticraft:machine/geothermal_generator"
+    },
+    "active=true": {
+      "model": "galacticraft:machine/geothermal_generator_active"
+    }
+  }
+}

@@ -390,6 +390,7 @@ public class GCTranslationProvider extends TranslationProvider {
         this.block(GCBlocks.COMPRESSOR, "Compressor");
         this.block(GCBlocks.ELECTRIC_COMPRESSOR, "Electric Compressor");
         this.block(GCBlocks.COAL_GENERATOR, "Coal Generator");
+        this.block(GCBlocks.GEOTHERMAL_GENERATOR, "Geothermal Generator");
         this.block(GCBlocks.BASIC_SOLAR_PANEL, "Basic Solar Panel");
         this.block(GCBlocks.ADVANCED_SOLAR_PANEL, "Advanced Solar Panel");
         this.block(GCBlocks.ENERGY_STORAGE_MODULE, "Energy Storage Module");
@@ -1074,6 +1075,7 @@ public class GCTranslationProvider extends TranslationProvider {
         this.blockDesc(GCBlocks.CANNON, "Uses tracking data from radars within 64 blocks to automatically intercept meteors within 256 blocks.");
         this.blockDesc(GCBlocks.CIRCUIT_FABRICATOR, "Fabricates the silicon wafers needed for more advanced machines.");
         this.blockDesc(GCBlocks.COAL_GENERATOR, "Burns coal and charcoal to generate electricity.");
+        this.blockDesc(GCBlocks.GEOTHERMAL_GENERATOR, "Generates electricity from the heat of a vapor spout. Place it on a spout with sulfuric acid below.");
         this.blockDesc(GCBlocks.COMPRESSOR, "Compresses ingots to create stronger materials. Requires furnace fuel to run.");
         this.blockDesc(GCBlocks.ELECTRIC_COMPRESSOR, "Compresses ingots to create stronger materials.");
         this.blockDesc(GCBlocks.ELECTRIC_FURNACE, "Uses electricity instead of fuel to smelt items.");
@@ -1387,6 +1389,8 @@ public class GCTranslationProvider extends TranslationProvider {
         this.add(Ui.COLLECTING, "Collecting: %s/s");
         this.add(Ui.CURRENT_OXYGEN, "Oxygen: %s");
         this.add(Ui.GJT, "%s gJ/t");
+        this.add(Ui.GEOTHERMAL_GENERATING, "Generating: %s gJ/t");
+        this.add(Ui.GEOTHERMAL_NO_SPOUT, "No vapor spout below");
         this.add(Ui.MILLIBUCKETS, "mB");
         this.add(Ui.MAX_OXYGEN, "Maximum Oxygen: %s");
         this.add(Ui.MACHINE_STATUS, "Status: %s");

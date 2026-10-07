@@ -39,6 +39,7 @@ public class GCBlockEntityTypes {
     public static final GCRegistry<BlockEntityType<?>> BLOCK_ENTITIES = new GCRegistry<>(BuiltInRegistries.BLOCK_ENTITY_TYPE);
     // POWER GENERATION
     public static final BlockEntityType<CoalGeneratorBlockEntity> COAL_GENERATOR = register(Constant.Block.COAL_GENERATOR, CoalGeneratorBlockEntity::new, GCBlocks.COAL_GENERATOR);
+    public static final BlockEntityType<GeothermalGeneratorBlockEntity> GEOTHERMAL_GENERATOR = register(Constant.Block.GEOTHERMAL_GENERATOR, GeothermalGeneratorBlockEntity::new, GCBlocks.GEOTHERMAL_GENERATOR);
     public static final BlockEntityType<BasicSolarPanelBlockEntity> BASIC_SOLAR_PANEL = register(Constant.Block.BASIC_SOLAR_PANEL, BasicSolarPanelBlockEntity::new, GCBlocks.BASIC_SOLAR_PANEL);
     public static final BlockEntityType<AdvancedSolarPanelBlockEntity> ADVANCED_SOLAR_PANEL = register(Constant.Block.ADVANCED_SOLAR_PANEL, AdvancedSolarPanelBlockEntity::new, GCBlocks.ADVANCED_SOLAR_PANEL);
 

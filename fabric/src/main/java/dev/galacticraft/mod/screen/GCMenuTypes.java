@@ -39,6 +39,7 @@ import net.minecraft.world.item.crafting.*;
 
 public class GCMenuTypes {
     public static final MenuType<CoalGeneratorMenu> COAL_GENERATOR = SynchronizedMenuType.create((type, id, inventory, pos) -> new CoalGeneratorMenu(id, inventory, pos));
+    public static final MenuType<GeothermalGeneratorMenu> GEOTHERMAL_GENERATOR = SynchronizedMenuType.create((type, id, inventory, pos) -> new GeothermalGeneratorMenu(id, inventory, pos));
     public static final MenuType<SolarPanelMenu<BasicSolarPanelBlockEntity>> BASIC_SOLAR_PANEL = SynchronizedMenuType.create(SolarPanelMenu::new);
     public static final MenuType<SolarPanelMenu<AdvancedSolarPanelBlockEntity>> ADVANCED_SOLAR_PANEL = SynchronizedMenuType.create(SolarPanelMenu::new);
 
@@ -92,6 +93,7 @@ public class GCMenuTypes {
         Registry.register(BuiltInRegistries.MENU, Constant.id(Constant.Menu.PET_INVENTORY_MENU), PET_INV_GC);
 
         Registry.register(BuiltInRegistries.MENU, Constant.id(Constant.Menu.COAL_GENERATOR_MENU), COAL_GENERATOR);
+        Registry.register(BuiltInRegistries.MENU, Constant.id(Constant.Menu.GEOTHERMAL_GENERATOR_MENU), GEOTHERMAL_GENERATOR);
         Registry.register(BuiltInRegistries.MENU, Constant.id(Constant.Menu.BASIC_SOLAR_PANEL_MENU), BASIC_SOLAR_PANEL);
         Registry.register(BuiltInRegistries.MENU, Constant.id(Constant.Menu.ADVANCED_SOLAR_PANEL_MENU), ADVANCED_SOLAR_PANEL);
 

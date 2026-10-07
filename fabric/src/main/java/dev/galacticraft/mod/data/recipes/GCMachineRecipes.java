@@ -103,6 +103,18 @@ public class GCMachineRecipes extends FabricRecipeProvider {
                 .emiDefaultRecipe(true)
                 .save(output);
 
+        GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.GEOTHERMAL_GENERATOR)
+                .define('X', GCItems.COMPRESSED_BRONZE)
+                .define('V', GCItems.ATMOSPHERIC_VALVE)
+                .define('W', GCBlocks.ALUMINUM_WIRE)
+                .define('G', GCBlocks.COAL_GENERATOR)
+                .define('L', GCItemTags.LEAD_INGOTS)
+                .pattern("XVX")
+                .pattern("WGW")
+                .pattern("XLX")
+                .unlockedBy(getHasName(GCBlocks.COAL_GENERATOR), has(GCBlocks.COAL_GENERATOR))
+                .save(output);
+
         GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.COMPRESSOR)
                 .define('I', GCItemTags.ALUMINUM_INGOTS)
                 .define('A', Items.ANVIL)
