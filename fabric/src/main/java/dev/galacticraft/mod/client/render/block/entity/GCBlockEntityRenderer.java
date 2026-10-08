@@ -37,6 +37,7 @@ public class GCBlockEntityRenderer {
         BlockEntityRenderers.register(GCBlockEntityTypes.TERRAFORMER, TerraformerRenderer::new);
         BlockEntityRenderers.register(GCBlockEntityTypes.ROCKET_WORKBENCH, RocketWorkbenchBlockEntityRenderer::new);
         BlockEntityRenderers.register(GCBlockEntityTypes.ASTRO_MINER_BASE, AstroMinerBaseBlockEntityRenderer::new);
+        BlockEntityRenderers.register(GCBlockEntityTypes.SHORT_RANGE_TELEPAD, ShortRangeTelepadBlockEntityRenderer::new);
         BlockEntityRenderers.register(GCBlockEntityTypes.RADAR, RadarBlockEntityRenderer::new);
         BlockEntityRenderers.register(GCBlockEntityTypes.CANNON, CannonBlockEntityRenderer::new);
         BlockEntityRenderers.register(GCBlockEntityTypes.FLAG, FlagBlockEntityRenderer::new);

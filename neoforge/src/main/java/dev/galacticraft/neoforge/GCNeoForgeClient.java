@@ -176,7 +176,7 @@ public final class GCNeoForgeClient {
                 return GCNeoItemRenderer.INSTANCE;
             }
         };
-        event.registerItem(extension, GCItems.ROCKET, GCItems.ASTRO_MINER, GCItems.CARGO_ROCKET, GCItems.BUGGY, GCBlocks.PARACHEST.asItem());
+        event.registerItem(extension, GCItems.ROCKET, GCItems.ASTRO_MINER, GCItems.CARGO_ROCKET, GCItems.BUGGY, GCBlocks.PARACHEST.asItem(), GCBlocks.SHORT_RANGE_TELEPAD.asItem());
         event.registerItem(extension, GCItems.FLAGS.colorMap().values().toArray(net.minecraft.world.item.Item[]::new));
     }
 
@@ -424,6 +424,7 @@ public final class GCNeoForgeClient {
         event.registerBlockEntityRenderer(GCBlockEntityTypes.TERRAFORMER, GCNeoTerraformerRenderer::new);
         event.registerBlockEntityRenderer(GCBlockEntityTypes.ROCKET_WORKBENCH, RocketWorkbenchBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(GCBlockEntityTypes.ASTRO_MINER_BASE, AstroMinerBaseBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(GCBlockEntityTypes.SHORT_RANGE_TELEPAD, ShortRangeTelepadBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(GCBlockEntityTypes.RADAR, RadarBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(GCBlockEntityTypes.CANNON, CannonBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(GCBlockEntityTypes.FLAG, FlagBlockEntityRenderer::new);

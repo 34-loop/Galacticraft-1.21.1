@@ -1,0 +1,5 @@
+newmtl Connector
+map_Kd galacticraft:obj/short_range_telepad_connector
+
+newmtl Main
+map_Kd galacticraft:obj/short_range_telepad

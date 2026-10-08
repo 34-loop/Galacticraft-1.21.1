@@ -403,6 +403,7 @@ public class GCTranslationProvider extends TranslationProvider {
         this.block(GCBlocks.METHANE_SYNTHESIZER, "Methane Synthesizer");
         this.block(GCBlocks.GAS_LIQUEFIER, "Gas Liquefier");
         this.block(GCBlocks.SHORT_RANGE_TELEPAD, "Short Range Telepad");
+        this.block(GCBlocks.SHORT_RANGE_TELEPAD_PART, "Short Range Telepad");
         this.block(GCBlocks.OXYGEN_COLLECTOR, "Oxygen Collector");
         this.block(GCBlocks.OXYGEN_SEALER, "Oxygen Sealer");
         this.block(GCBlocks.OXYGEN_BUBBLE_DISTRIBUTOR, "Bubble Distributor");

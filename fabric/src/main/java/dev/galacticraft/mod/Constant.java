@@ -400,6 +400,7 @@ public interface Constant {
         String RADAR = "radar";
         String CANNON = "cannon";
         String SHORT_RANGE_TELEPAD = "short_range_telepad";
+        String SHORT_RANGE_TELEPAD_PART = "short_range_telepad_part";
         String PLAYER_TRANSPORT_TUBE = "player_transport_tube";
         String HYPERLOOP = "hyperloop";
 

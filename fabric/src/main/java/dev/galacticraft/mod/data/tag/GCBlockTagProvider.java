@@ -661,6 +661,7 @@ public class GCBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .forceAddTag(GCBlockTags.MACHINES)
+                .add(GCBlocks.SHORT_RANGE_TELEPAD_PART)
                 .add(stairs)
                 .add(slabs)
                 .add(walls)

@@ -626,6 +626,7 @@
   "block.galacticraft.sealable_glass_fluid_pipe": "Sealable Glass Fluid Pipe",
   "block.galacticraft.short_range_telepad": "Short Range Telepad",
   "block.galacticraft.short_range_telepad.description": "Teleports players and other living creatures standing on it to a linked telepad up to 256 blocks away in the same dimension.",
+  "block.galacticraft.short_range_telepad_part": "Short Range Telepad",
   "block.galacticraft.silicon_block": "Block of Silicon",
   "block.galacticraft.silicon_ore": "Silicon Ore",
   "block.galacticraft.soft_venus_rock": "Soft Venus Rock",

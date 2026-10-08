@@ -24,6 +24,7 @@ package dev.galacticraft.neoforge.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.galacticraft.mod.client.render.item.AstroMinerItemRenderer;
+import dev.galacticraft.mod.client.render.item.ShortRangeTelepadItemRenderer;
 import dev.galacticraft.mod.client.render.item.BuggyItemRenderer;
 import dev.galacticraft.mod.client.render.item.CargoRocketItemRenderer;
 import dev.galacticraft.mod.client.render.item.FlagItemRenderer;
@@ -48,6 +49,7 @@ public final class GCNeoItemRenderer extends BlockEntityWithoutLevelRenderer {
     private final CargoRocketItemRenderer cargoRocket = new CargoRocketItemRenderer();
     private final BuggyItemRenderer buggy = new BuggyItemRenderer();
     private final FlagItemRenderer flag = new FlagItemRenderer();
+    private final ShortRangeTelepadItemRenderer telepad = new ShortRangeTelepadItemRenderer();
 
     private GCNeoItemRenderer() {
         super(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
@@ -62,6 +64,7 @@ public final class GCNeoItemRenderer extends BlockEntityWithoutLevelRenderer {
         else if (stack.is(GCBlocks.PARACHEST.asItem())) Minecraft.getInstance().getBlockRenderer().renderSingleBlock(
                 GCBlocks.PARACHEST.defaultBlockState().setValue(ParachestBlock.COLOR,
                         stack.getOrDefault(DataComponents.BASE_COLOR, DyeColor.WHITE)), poses, buffers, light, overlay);
+        else if (stack.is(GCBlocks.SHORT_RANGE_TELEPAD.asItem())) telepad.render(stack, context, poses, buffers, light, overlay);
         else if (stack.getItem() instanceof FlagItem) flag.render(stack, context, poses, buffers, light, overlay);
     }
 }

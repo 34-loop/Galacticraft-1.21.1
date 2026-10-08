@@ -213,8 +213,16 @@ for liquefier in "3 64 -8 galacticraft:fuel" "5 64 -8 galacticraft:liquid_oxygen
     fi
 done
 
-# Open telepad A's screen, then stand on it and wait to arrive on telepad B.
-$RCON "$ow tp Tester -4.5 64 -3.5 180 60" > /dev/null
+# Each telepad is a 3x3x3 multiblock: a ring of parts around the pad and a roof two blocks up.
+for part in "-4 64 -5" "-6 64 -6" "-5 66 -5" "-4 66 -4"; do
+    if [[ "$($RCON "$ow execute if block $part galacticraft:short_range_telepad_part")" != *"Test passed"* ]]; then
+        fail "telepad part missing at $part"
+    fi
+done
+$RCON "$ow tp Tester 1.5 65 -5.5 90 5" > /dev/null
+screenshot 03-telepad 4
+# Open telepad A's screen through one of its parts, then stand on it and wait to arrive on B.
+$RCON "$ow tp Tester -4.5 64.2 -3.5 180 60" > /dev/null
 sleep 3
 xdotool click 3
 screenshot 03-telepad-screen 3
@@ -235,6 +243,13 @@ echo "Short range telepad: arrived=$arrived after ${elapsed}s, z=$z, sender ener
 if ((arrived == 0)); then
     fail "short range telepad did not teleport the player"
 fi
+# Removing a part removes the whole telepad.
+$RCON "$ow setblock -6 66 6 air" > /dev/null
+for block in "-5 64 5" "-4 64 5" "-5 66 5"; do
+    if [[ "$($RCON "$ow execute if block $block air")" != *"Test passed"* ]]; then
+        fail "telepad block at $block was not removed with the telepad"
+    fi
+done
 
 # 3x3 launch pad centred on (0, 64, 0) and a creative (fully fuelled) tier 1 rocket on it.
 pad=(center:0:0 north:0:-1 south:0:1 west:-1:0 east:1:0 north_west:-1:-1 north_east:1:-1 south_west:-1:1 south_east:1:1)
