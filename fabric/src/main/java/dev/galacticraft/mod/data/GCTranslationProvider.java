@@ -402,6 +402,7 @@ public class GCTranslationProvider extends TranslationProvider {
         this.block(GCBlocks.WATER_ELECTROLYZER, "Water Electrolyzer");
         this.block(GCBlocks.METHANE_SYNTHESIZER, "Methane Synthesizer");
         this.block(GCBlocks.GAS_LIQUEFIER, "Gas Liquefier");
+        this.block(GCBlocks.SHORT_RANGE_TELEPAD, "Short Range Telepad");
         this.block(GCBlocks.OXYGEN_COLLECTOR, "Oxygen Collector");
         this.block(GCBlocks.OXYGEN_SEALER, "Oxygen Sealer");
         this.block(GCBlocks.OXYGEN_BUBBLE_DISTRIBUTOR, "Bubble Distributor");
@@ -1108,6 +1109,7 @@ public class GCTranslationProvider extends TranslationProvider {
         this.blockDesc(GCBlocks.REFINERY, "Refines crude oil into fuel used by rockets and vehicles.");
         this.blockDesc(GCBlocks.WATER_ELECTROLYZER, "Splits water into oxygen and hydrogen using electricity.");
         this.blockDesc(GCBlocks.GAS_LIQUEFIER, "Liquefies methane into rocket fuel and oxygen into liquid oxygen.");
+        this.blockDesc(GCBlocks.SHORT_RANGE_TELEPAD, "Teleports players and other living creatures standing on it to a linked telepad up to 256 blocks away in the same dimension.");
         this.blockDesc(GCBlocks.METHANE_SYNTHESIZER, "Combines hydrogen with carbon from carbon fragments, or from a carbon dioxide atmosphere through an atmospheric valve, into methane.");
 
         this.add(Tooltip.CREATIVE_ONLY, "Creative Only");
@@ -1308,6 +1310,13 @@ public class GCTranslationProvider extends TranslationProvider {
         this.add(MachineStatus.NOT_ENOUGH_GAS, "Not Enough Gas");
         this.add(MachineStatus.NOT_ENOUGH_HYDROGEN, "Not Enough Hydrogen");
         this.add(MachineStatus.NOT_ENOUGH_CARBON, "Not Enough Carbon");
+        this.add(MachineStatus.TELEPORTING, "Teleporting");
+        this.add(MachineStatus.TELEPAD_READY, "Ready");
+        this.add(MachineStatus.TELEPAD_NO_ADDRESS, "No Address Set");
+        this.add(MachineStatus.TELEPAD_ADDRESS_IN_USE, "Address In Use");
+        this.add(MachineStatus.TELEPAD_NO_TARGET, "No Target Set");
+        this.add(MachineStatus.TELEPAD_TARGET_NOT_FOUND, "Telepad Not Found");
+        this.add(MachineStatus.TELEPAD_TARGET_TOO_FAR, "Target Out of Range");
         this.add(MachineStatus.MISSING_OIL, "Missing Oil");
         this.add(MachineStatus.FUEL_TANK_FULL, "Fuel Tank Full");
         this.add(MachineStatus.PREPARING, "Preparing");
@@ -1403,6 +1412,12 @@ public class GCTranslationProvider extends TranslationProvider {
         this.add(Ui.GJT, "%s gJ/t");
         this.add(Ui.GEOTHERMAL_GENERATING, "Generating: %s gJ/t");
         this.add(Ui.GEOTHERMAL_NO_SPOUT, "No vapor spout below");
+        this.add(Ui.TELEPAD_ADDRESS, "Address:");
+        this.add(Ui.TELEPAD_TARGET_ADDRESS, "Target:");
+        this.add(Ui.TELEPAD_SET, "Set");
+        this.add(Ui.TELEPAD_COUNTDOWN, "Teleporting in %ss");
+        this.add(Ui.TELEPAD_TARGET_INVALID, "Target telepad is disabled");
+        this.add(Ui.TELEPAD_TARGET_NO_ENERGY, "Target telepad has no power");
         this.add(Ui.MILLIBUCKETS, "mB");
         this.add(Ui.MAX_OXYGEN, "Maximum Oxygen: %s");
         this.add(Ui.MACHINE_STATUS, "Status: %s");

@@ -480,6 +480,7 @@ public class GCBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 GCBlocks.WATER_ELECTROLYZER,
                 GCBlocks.METHANE_SYNTHESIZER,
                 GCBlocks.GAS_LIQUEFIER,
+                GCBlocks.SHORT_RANGE_TELEPAD,
                 GCBlocks.FUEL_LOADER,
                 GCBlocks.CARGO_LOADER,
                 GCBlocks.CARGO_UNLOADER,

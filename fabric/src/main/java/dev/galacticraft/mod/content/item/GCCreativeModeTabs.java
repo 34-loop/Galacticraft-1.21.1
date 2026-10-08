@@ -309,6 +309,7 @@ public class GCCreativeModeTabs {
                 output.accept(WATER_ELECTROLYZER);
                 output.accept(METHANE_SYNTHESIZER);
                 output.accept(GAS_LIQUEFIER);
+                output.accept(SHORT_RANGE_TELEPAD);
                 output.accept(FUEL_LOADER);
                 output.accept(CARGO_LOADER);
                 output.accept(CARGO_UNLOADER);

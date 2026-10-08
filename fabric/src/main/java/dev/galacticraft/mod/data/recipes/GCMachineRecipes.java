@@ -157,6 +157,17 @@ public class GCMachineRecipes extends FabricRecipeProvider {
                 .unlockedBy(getHasName(GCItems.FLUID_MANIPULATOR), has(GCItems.FLUID_MANIPULATOR))
                 .save(output);
 
+        GCShapedRecipeBuilder.crafting(RecipeCategory.TRANSPORTATION, GCBlocks.SHORT_RANGE_TELEPAD)
+                .define('X', GCItems.COMPRESSED_TITANIUM)
+                .define('W', GCItems.BEAM_CORE)
+                .define('Z', Items.ENDER_PEARL)
+                .define('Y', Items.REDSTONE)
+                .pattern("XWX")
+                .pattern("ZYZ")
+                .pattern("XXX")
+                .unlockedBy(getHasName(GCItems.BEAM_CORE), has(GCItems.BEAM_CORE))
+                .save(output);
+
         GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.COMPRESSOR)
                 .define('I', GCItemTags.ALUMINUM_INGOTS)
                 .define('A', Items.ANVIL)

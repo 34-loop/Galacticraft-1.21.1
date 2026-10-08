@@ -137,6 +137,7 @@ public class GalacticraftClient implements ClientModInitializer {
         MenuRegistry.registerScreenFactory(GCMenuTypes.WATER_ELECTROLYZER, WaterElectrolyzerScreen::new);
         MenuRegistry.registerScreenFactory(GCMenuTypes.METHANE_SYNTHESIZER, MethaneSynthesizerScreen::new);
         MenuRegistry.registerScreenFactory(GCMenuTypes.GAS_LIQUEFIER, GasLiquefierScreen::new);
+        MenuRegistry.registerScreenFactory(GCMenuTypes.SHORT_RANGE_TELEPAD, ShortRangeTelepadScreen::new);
         MenuRegistry.registerScreenFactory(GCMenuTypes.ELECTRIC_FURNACE, ElectricFurnaceScreen::new);
         MenuRegistry.registerScreenFactory(GCMenuTypes.ELECTRIC_ARC_FURNACE, ElectricArcFurnaceScreen::new);
         MenuRegistry.registerScreenFactory(GCMenuTypes.COMPRESSOR, CompressorScreen::new);

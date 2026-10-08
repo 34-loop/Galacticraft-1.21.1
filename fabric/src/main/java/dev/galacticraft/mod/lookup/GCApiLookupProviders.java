@@ -48,6 +48,7 @@ public final class GCApiLookupProviders {
                 GCBlockEntityTypes.WATER_ELECTROLYZER,
                 GCBlockEntityTypes.METHANE_SYNTHESIZER,
                 GCBlockEntityTypes.GAS_LIQUEFIER,
+                GCBlockEntityTypes.SHORT_RANGE_TELEPAD,
                 GCBlockEntityTypes.FUEL_LOADER,
                 GCBlockEntityTypes.CARGO_LOADER,
                 GCBlockEntityTypes.CARGO_UNLOADER,

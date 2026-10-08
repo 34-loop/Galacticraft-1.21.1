@@ -353,6 +353,7 @@ public class GCBlockLootTableProvider extends FabricBlockLootTableProvider {
         this.dropSelf(GCBlocks.WATER_ELECTROLYZER);
         this.dropSelf(GCBlocks.METHANE_SYNTHESIZER);
         this.dropSelf(GCBlocks.GAS_LIQUEFIER);
+        this.dropSelf(GCBlocks.SHORT_RANGE_TELEPAD);
         this.dropSelf(GCBlocks.OXYGEN_COLLECTOR);
         this.dropSelf(GCBlocks.OXYGEN_SEALER);
         this.dropSelf(GCBlocks.OXYGEN_BUBBLE_DISTRIBUTOR);

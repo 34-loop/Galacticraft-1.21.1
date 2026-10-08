@@ -446,6 +446,13 @@ public interface Translations {
         String NOT_ENOUGH_GAS = "ui.galacticraft.status.not_enough_gas";
         String NOT_ENOUGH_HYDROGEN = "ui.galacticraft.status.not_enough_hydrogen";
         String NOT_ENOUGH_CARBON = "ui.galacticraft.status.not_enough_carbon";
+        String TELEPORTING = "ui.galacticraft.status.teleporting";
+        String TELEPAD_READY = "ui.galacticraft.status.telepad_ready";
+        String TELEPAD_NO_ADDRESS = "ui.galacticraft.status.telepad_no_address";
+        String TELEPAD_ADDRESS_IN_USE = "ui.galacticraft.status.telepad_address_in_use";
+        String TELEPAD_NO_TARGET = "ui.galacticraft.status.telepad_no_target";
+        String TELEPAD_TARGET_NOT_FOUND = "ui.galacticraft.status.telepad_target_not_found";
+        String TELEPAD_TARGET_TOO_FAR = "ui.galacticraft.status.telepad_target_too_far";
         String MISSING_OIL = "ui.galacticraft.status.missing_oil";
         String FUEL_TANK_FULL = "ui.galacticraft.status.fuel_tank_full";
         String PREPARING = "ui.galacticraft.status.preparing";
@@ -546,6 +553,12 @@ public interface Translations {
         String GJT = "ui.galacticraft.machine.gj_per_t";
         String GEOTHERMAL_GENERATING = "ui.galacticraft.geothermal_generator.generating";
         String GEOTHERMAL_NO_SPOUT = "ui.galacticraft.geothermal_generator.no_spout";
+        String TELEPAD_ADDRESS = "ui.galacticraft.short_range_telepad.address";
+        String TELEPAD_TARGET_ADDRESS = "ui.galacticraft.short_range_telepad.target_address";
+        String TELEPAD_SET = "ui.galacticraft.short_range_telepad.set";
+        String TELEPAD_COUNTDOWN = "ui.galacticraft.short_range_telepad.countdown";
+        String TELEPAD_TARGET_INVALID = "ui.galacticraft.short_range_telepad.target_invalid";
+        String TELEPAD_TARGET_NO_ENERGY = "ui.galacticraft.short_range_telepad.target_no_energy";
         String MILLIBUCKETS = "ui.galacticraft.machine.millibuckets";
         String MAX_OXYGEN = "ui.galacticraft.machine.max_oxygen";
         String MACHINE_STATUS = "ui.galacticraft.machine.status";

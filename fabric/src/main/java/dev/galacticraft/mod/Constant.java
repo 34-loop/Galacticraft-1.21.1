@@ -1289,6 +1289,7 @@ public interface Constant {
         String WATER_ELECTROLYZER_MENU = "water_electrolyzer_menu";
         String METHANE_SYNTHESIZER_MENU = "methane_synthesizer_menu";
         String GAS_LIQUEFIER_MENU = "gas_liquefier_menu";
+        String SHORT_RANGE_TELEPAD_MENU = "short_range_telepad_menu";
         String ELECTRIC_FURNACE_MENU = "electric_furnace_menu";
         String ELECTRIC_ARC_FURNACE_MENU = "electric_arc_furnace_menu";
         String OXYGEN_COLLECTOR_MENU = "oxygen_collector_menu";
@@ -1403,6 +1404,8 @@ public interface Constant {
         String PULL = "Pull";
         String HEAT = "Heat";
         String CARBON_FRAGMENT_OPERATIONS = "CarbonFragmentOperations";
+        String TELEPAD_ADDRESS = "TelepadAddress";
+        String TELEPAD_TARGET_ADDRESS = "TelepadTargetAddress";
         String INPUTS = "Inputs";
         String OUTPUTS = "Outputs";
         String SHAPELESS = "Shapeless";

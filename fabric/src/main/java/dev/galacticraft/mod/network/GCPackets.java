@@ -57,6 +57,7 @@ public class GCPackets {
         registerC2S(BubbleMaxPayload.TYPE, BubbleMaxPayload.STREAM_CODEC);
         registerC2S(BubbleVisibilityPayload.TYPE, BubbleVisibilityPayload.STREAM_CODEC);
         registerC2S(TerraformerTogglePayload.TYPE, TerraformerTogglePayload.STREAM_CODEC);
+        registerC2S(TelepadAddressPayload.TYPE, TelepadAddressPayload.STREAM_CODEC);
         NetworkManager.registerReceiver(NetworkManager.Side.C2S, ControlEntityPayload.TYPE, ControlEntityPayload.STREAM_CODEC,
                 (payload, context) -> context.queue(() -> payload.apply((ServerPlayer) context.getPlayer())));
         registerC2S(EjectCanPayload.TYPE, EjectCanPayload.STREAM_CODEC);

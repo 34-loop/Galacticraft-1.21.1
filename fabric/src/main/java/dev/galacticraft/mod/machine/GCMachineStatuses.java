@@ -77,6 +77,15 @@ public final class GCMachineStatuses {
     public static final MachineStatus NOT_ENOUGH_GAS = MachineStatus.create(Translations.MachineStatus.NOT_ENOUGH_GAS, ChatFormatting.RED, MachineStatus.Type.MISSING_FLUIDS);
     public static final MachineStatus NOT_ENOUGH_HYDROGEN = MachineStatus.create(Translations.MachineStatus.NOT_ENOUGH_HYDROGEN, ChatFormatting.RED, MachineStatus.Type.MISSING_FLUIDS);
     public static final MachineStatus NOT_ENOUGH_CARBON = MachineStatus.create(Translations.MachineStatus.NOT_ENOUGH_CARBON, ChatFormatting.RED, MachineStatus.Type.MISSING_RESOURCE);
+
+    // Short Range Telepad
+    public static final MachineStatus TELEPORTING = MachineStatus.create(Translations.MachineStatus.TELEPORTING, ChatFormatting.GREEN, MachineStatus.Type.WORKING);
+    public static final MachineStatus TELEPAD_READY = MachineStatus.create(Translations.MachineStatus.TELEPAD_READY, ChatFormatting.GREEN, MachineStatus.Type.OTHER);
+    public static final MachineStatus TELEPAD_NO_ADDRESS = MachineStatus.create(Translations.MachineStatus.TELEPAD_NO_ADDRESS, ChatFormatting.RED, MachineStatus.Type.OTHER);
+    public static final MachineStatus TELEPAD_ADDRESS_IN_USE = MachineStatus.create(Translations.MachineStatus.TELEPAD_ADDRESS_IN_USE, ChatFormatting.RED, MachineStatus.Type.OTHER);
+    public static final MachineStatus TELEPAD_NO_TARGET = MachineStatus.create(Translations.MachineStatus.TELEPAD_NO_TARGET, ChatFormatting.GOLD, MachineStatus.Type.OTHER);
+    public static final MachineStatus TELEPAD_TARGET_NOT_FOUND = MachineStatus.create(Translations.MachineStatus.TELEPAD_TARGET_NOT_FOUND, ChatFormatting.RED, MachineStatus.Type.OTHER);
+    public static final MachineStatus TELEPAD_TARGET_TOO_FAR = MachineStatus.create(Translations.MachineStatus.TELEPAD_TARGET_TOO_FAR, ChatFormatting.RED, MachineStatus.Type.OTHER);
     public static final MachineStatus MISSING_OIL = MachineStatus.create(Translations.MachineStatus.MISSING_OIL, ChatFormatting.RED, MachineStatus.Type.MISSING_FLUIDS);
     public static final MachineStatus FUEL_TANK_FULL = MachineStatus.create(Translations.MachineStatus.FUEL_TANK_FULL, ChatFormatting.GOLD, MachineStatus.Type.OTHER);
 

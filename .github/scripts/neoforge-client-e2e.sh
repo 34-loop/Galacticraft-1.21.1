@@ -150,6 +150,12 @@ for liquefier in "3 64 -8 methane" "5 64 -8 oxygen"; do
     $RCON "$ow setblock $x $y $z galacticraft:gas_liquefier" \
         "$ow data merge block $x $y $z {EnergyStorage:30000L,FluidStorage:[{Resource:\"galacticraft:$gas\",Amount:81000L},{}]}" > /dev/null
 done
+# Two linked short range telepads: A (address 1) sends to B (address 2), which has no target.
+for telepad in "-5 -5 1 2" "-5 5 2 -1"; do
+    read -r x z address target <<< "$telepad"
+    $RCON "$ow setblock $x 64 $z galacticraft:short_range_telepad" \
+        "$ow data merge block $x 64 $z {EnergyStorage:30000L,TelepadAddress:$address,TelepadTargetAddress:$target}" > /dev/null
+done
 screenshot 01-machines
 
 $RCON "dimtp galacticraft:moon Tester"
@@ -207,6 +213,29 @@ for liquefier in "3 64 -8 galacticraft:fuel" "5 64 -8 galacticraft:liquid_oxygen
     fi
 done
 
+# Open telepad A's screen, then stand on it and wait to arrive on telepad B.
+$RCON "$ow tp Tester -4.5 64 -3.5 180 60" > /dev/null
+sleep 3
+xdotool click 3
+screenshot 03-telepad-screen 3
+xdotool key Escape
+sleep 1
+$RCON "$ow tp Tester -4.5 64.45 -4.5" > /dev/null
+arrived=0
+for ((elapsed = 0; elapsed < 30; elapsed += 2)); do
+    sleep 2
+    z=$(entity_data Tester 'Pos[2]' | tr -d 'd')
+    if [[ "$z" =~ ^-?[0-9.]+$ ]] && (($(printf '%.0f' "$z") >= 4)); then
+        arrived=1
+        break
+    fi
+done
+telepad_energy=$(block_value "-5 64 -5" EnergyStorage)
+echo "Short range telepad: arrived=$arrived after ${elapsed}s, z=$z, sender energy=$telepad_energy"
+if ((arrived == 0)); then
+    fail "short range telepad did not teleport the player"
+fi
+
 # 3x3 launch pad centred on (0, 64, 0) and a creative (fully fuelled) tier 1 rocket on it.
 pad=(center:0:0 north:0:-1 south:0:1 west:-1:0 east:1:0 north_west:-1:-1 north_east:1:-1 south_west:-1:1 south_east:1:1)
 for part in "${pad[@]}"; do
@@ -217,7 +246,7 @@ tier1='engine:"galacticraft:tier_1",fin:"galacticraft:tier_1",body:"galacticraft
 $RCON "$ow tp Tester -4.5 64 0.5 -90 10" \
     "$ow summon galacticraft:rocket 0.5 64.1875 0.5 {Creative:1b,data:{$tier1}}" \
     "$ow ride Tester mount @e[type=galacticraft:rocket,limit=1]"
-screenshot 03-rocket-on-pad
+screenshot 04-rocket-on-pad
 
 # Two presses of jump: the first arms the launch, the second ignites it.
 for _ in 1 2; do
@@ -237,7 +266,7 @@ for ((elapsed = 0; elapsed < 120; elapsed += 5)); do
         break
     fi
 done
-screenshot 04-flight 1
+screenshot 05-flight 1
 if ((launched == 0)); then
     fail "rocket did not launch"
 fi
@@ -247,7 +276,7 @@ for ((elapsed = 0; elapsed < 120; elapsed += 5)); do
     [[ "$($RCON "$ow execute if entity @e[type=galacticraft:rocket]")" == *"Test passed"* ]] || break
     sleep 5
 done
-screenshot 05-celestial-screen 5
+screenshot 06-celestial-screen 5
 
 # --- Checks --------------------------------------------------------------------------------
 if grep -qE 'Crash report|---- Minecraft Crash' "$CLIENT_LOG" "$SERVER_LOG"; then

@@ -336,6 +336,8 @@ public class GCModelProvider extends FabricModelProvider {
         createActiveMachine(generator, GCBlocks.WATER_ELECTROLYZER);
         createActiveMachine(generator, GCBlocks.METHANE_SYNTHESIZER);
         createActiveMachine(generator, GCBlocks.GAS_LIQUEFIER);
+        generator.blockStateOutput.accept(MultiVariantGenerator.multiVariant(GCBlocks.SHORT_RANGE_TELEPAD, Variant.variant().with(VariantProperties.MODEL, Constant.id("block/short_range_telepad"))));
+        generator.delegateItemModel(GCBlocks.SHORT_RANGE_TELEPAD, Constant.id("block/short_range_telepad"));
 
         createFoodCanner(generator, GCBlocks.FOOD_CANNER, new String[]{
                 "_empty", "_active"
