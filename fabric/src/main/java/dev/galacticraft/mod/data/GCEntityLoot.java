@@ -24,6 +24,7 @@ package dev.galacticraft.mod.data;
 
 import dev.galacticraft.mod.content.GCEntityTypes;
 import dev.galacticraft.mod.content.GCRegistry;
+import dev.galacticraft.mod.content.item.GCItems;
 import dev.galacticraft.mod.data.loot.GCEntityLootSubProvider;
 import dev.galacticraft.mod.tag.GCItemTags;
 import net.minecraft.advancements.critereon.EntityPredicate;
@@ -39,7 +40,6 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.TagEntry;
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.functions.SmeltItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithEnchantedBonusCondition;
@@ -71,11 +71,8 @@ public class GCEntityLoot extends GCEntityLootSubProvider {
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0F))
                                         .add(LootItem.lootTableItem(Items.IRON_INGOT))
-                                        .add(LootItem.lootTableItem(Items.CARROT))
-                                        .add(
-                                                LootItem.lootTableItem(Items.POTATO)
-                                                        .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
-                                        )
+                                        .add(LootItem.lootTableItem(GCItems.DEHYDRATED_CARROT))
+                                        .add(LootItem.lootTableItem(GCItems.DEHYDRATED_POTATO))
                                         .when(LootItemKilledByPlayerCondition.killedByPlayer())
                                         .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.lookup, 0.025F, 0.01F))
                         )

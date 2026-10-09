@@ -508,6 +508,12 @@ public class GCTranslationProvider extends TranslationProvider {
         this.item(GCItems.BEEF_PATTY, "Cooked Beef Patty");
         this.item(GCItems.CHEESEBURGER, "Cheeseburger");
         this.item(GCItems.MOON_TANGLE_FRUIT, "Moon Tangle Fruit");
+        this.item(GCItems.DEHYDRATED_APPLE, "Dehydrated Apple");
+        this.item(GCItems.DEHYDRATED_CARROT, "Dehydrated Carrot");
+        this.item(GCItems.DEHYDRATED_MELON, "Dehydrated Melon");
+        this.item(GCItems.DEHYDRATED_POTATO, "Dehydrated Potato");
+        this.item(GCItems.STRANGE_SEED, "Strange Seed");
+        this.item(GCItems.STRANGE_SEED_2, "Strange Seed");
 
         // ROCKET PLATES
         this.item(GCItems.TIER_1_HEAVY_DUTY_PLATE, "Heavy Plating");

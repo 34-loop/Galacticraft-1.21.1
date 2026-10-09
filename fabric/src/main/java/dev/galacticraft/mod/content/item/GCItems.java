@@ -158,6 +158,12 @@ public class GCItems {
     public static final Item BURGER_BUN = ITEMS.register(Constant.Item.BURGER_BUN, new Item(new Item.Properties().food(GCFoodComponent.BURGER_BUN)));
     public static final Item CHEESEBURGER = ITEMS.register(Constant.Item.CHEESEBURGER, new Item(new Item.Properties().food(GCFoodComponent.CHEESEBURGER)));
     public static final Item MOON_TANGLE_FRUIT = ITEMS.register(Constant.Item.MOON_TANGLE_FRUIT, new MoonTangleFruitItem(new Item.Properties().food(GCFoodComponent.MOON_TANGLE_FRUIT)));
+    public static final Item DEHYDRATED_APPLE = ITEMS.register(Constant.Item.DEHYDRATED_APPLE, new DehydratedFoodItem(new Item.Properties().food(GCFoodComponent.DEHYDRATED_APPLE)));
+    public static final Item DEHYDRATED_CARROT = ITEMS.register(Constant.Item.DEHYDRATED_CARROT, new DehydratedFoodItem(new Item.Properties().food(GCFoodComponent.DEHYDRATED_CARROT)));
+    public static final Item DEHYDRATED_MELON = ITEMS.register(Constant.Item.DEHYDRATED_MELON, new DehydratedFoodItem(new Item.Properties().food(GCFoodComponent.DEHYDRATED_MELON)));
+    public static final Item DEHYDRATED_POTATO = ITEMS.register(Constant.Item.DEHYDRATED_POTATO, new DehydratedFoodItem(new Item.Properties().food(GCFoodComponent.DEHYDRATED_POTATO)));
+    public static final Item STRANGE_SEED = ITEMS.register(Constant.Item.STRANGE_SEED, new Item(new Item.Properties().rarity(Rarity.RARE)));
+    public static final Item STRANGE_SEED_2 = ITEMS.register(Constant.Item.STRANGE_SEED_2, new Item(new Item.Properties().rarity(Rarity.RARE)));
 
     // THROWABLE METEOR CHUNKS
     public static final Item THROWABLE_METEOR_CHUNK = ITEMS.register(Constant.Item.THROWABLE_METEOR_CHUNK, new ThrowableMeteorChunkItem(new Item.Properties().stacksTo(16)));

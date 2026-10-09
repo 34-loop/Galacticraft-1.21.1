@@ -642,6 +642,12 @@ public interface Constant {
         String BASIC_ROCKET_FINS_SCHEMATIC = "basic_rocket_fins_schematic";
         String BASIC_ROCKET_ENGINE_SCHEMATIC = "basic_rocket_engine_schematic";
         String MOON_TANGLE_FRUIT = "moon_tangle_fruit";
+        String DEHYDRATED_APPLE = "dehydrated_apple";
+        String DEHYDRATED_CARROT = "dehydrated_carrot";
+        String DEHYDRATED_MELON = "dehydrated_melon";
+        String DEHYDRATED_POTATO = "dehydrated_potato";
+        String STRANGE_SEED = "strange_seed";
+        String STRANGE_SEED_2 = "strange_seed_2";
     }
 
     interface Particle {

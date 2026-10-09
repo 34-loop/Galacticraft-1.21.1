@@ -36,4 +36,8 @@ public class GCFoodComponent {
     public static final FoodProperties BEEF_PATTY = new FoodProperties.Builder().nutrition(4).saturationModifier(FOOD_SATURATION_GOOD).build();
     public static final FoodProperties CHEESEBURGER = new FoodProperties.Builder().nutrition(14).saturationModifier(FOOD_SATURATION_MAX).build();
     public static final FoodProperties MOON_TANGLE_FRUIT = new FoodProperties.Builder().nutrition(1).saturationModifier(FOOD_SATURATION_POOR).build();
+    public static final FoodProperties DEHYDRATED_APPLE = new FoodProperties.Builder().nutrition(8).saturationModifier(0.3F).build();
+    public static final FoodProperties DEHYDRATED_CARROT = new FoodProperties.Builder().nutrition(8).saturationModifier(0.6F).build();
+    public static final FoodProperties DEHYDRATED_MELON = new FoodProperties.Builder().nutrition(4).saturationModifier(0.3F).build();
+    public static final FoodProperties DEHYDRATED_POTATO = new FoodProperties.Builder().nutrition(2).saturationModifier(0.3F).build();
 }

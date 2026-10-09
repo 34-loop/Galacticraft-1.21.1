@@ -463,6 +463,12 @@ public class GCCreativeModeTabs {
                 output.accept(BURGER_BUN);
                 output.accept(CHEESEBURGER);
                 output.accept(MOON_TANGLE_FRUIT);
+                output.accept(DEHYDRATED_APPLE);
+                output.accept(DEHYDRATED_CARROT);
+                output.accept(DEHYDRATED_MELON);
+                output.accept(DEHYDRATED_POTATO);
+                output.accept(STRANGE_SEED);
+                output.accept(STRANGE_SEED_2);
 
                 output.accept(THROWABLE_METEOR_CHUNK);
                 output.accept(HOT_THROWABLE_METEOR_CHUNK);

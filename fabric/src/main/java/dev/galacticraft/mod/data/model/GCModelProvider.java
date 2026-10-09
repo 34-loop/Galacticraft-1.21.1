@@ -743,6 +743,12 @@ public class GCModelProvider extends FabricModelProvider {
         generator.generateFlatItem(GCItems.BEEF_PATTY, ModelTemplates.FLAT_ITEM);
         generator.generateFlatItem(GCItems.CHEESEBURGER, ModelTemplates.FLAT_ITEM);
         generator.generateFlatItem(GCItems.MOON_TANGLE_FRUIT, ModelTemplates.FLAT_ITEM);
+        generator.generateFlatItem(GCItems.DEHYDRATED_APPLE, ModelTemplates.FLAT_ITEM);
+        generator.generateFlatItem(GCItems.DEHYDRATED_CARROT, ModelTemplates.FLAT_ITEM);
+        generator.generateFlatItem(GCItems.DEHYDRATED_MELON, ModelTemplates.FLAT_ITEM);
+        generator.generateFlatItem(GCItems.DEHYDRATED_POTATO, ModelTemplates.FLAT_ITEM);
+        generator.generateFlatItem(GCItems.STRANGE_SEED, ModelTemplates.FLAT_ITEM);
+        generator.generateFlatItem(GCItems.STRANGE_SEED_2, ModelTemplates.FLAT_ITEM);
 
         // ROCKET PLATES
         generator.generateFlatItem(GCItems.TIER_1_HEAVY_DUTY_PLATE, ModelTemplates.FLAT_ITEM);
