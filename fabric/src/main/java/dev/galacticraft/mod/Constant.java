@@ -323,6 +323,14 @@ public interface Constant {
         String FOOD_CANNER = "food_canner";
         String OXYGEN_DECOMPRESSOR = "oxygen_decompressor";
         String OXYGEN_DETECTOR = "oxygen_detector";
+        String PANEL_LIGHT_SQUARE = "panel_light_square";
+        String PANEL_LIGHT_SPOTS = "panel_light_spots";
+        String PANEL_LIGHT_LINEAR = "panel_light_linear";
+        String PANEL_LIGHT_SF = "panel_light_sf";
+        String PANEL_LIGHT_SFDIAG = "panel_light_sfdiag";
+        String CONCEALED_REDSTONE = "concealed_redstone";
+        String CONCEALED_REPEATER = "concealed_repeater";
+        String CONCEALED_DETECTOR = "concealed_detector";
         String OXYGEN_SEALER = "oxygen_sealer";
         String FLUID_PIPE = "fluid_pipe";
         String REFINERY = "refinery";

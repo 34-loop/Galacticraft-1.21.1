@@ -381,6 +381,10 @@ public class GCModelProvider extends FabricModelProvider {
         createFuelLoader(generator, GCBlocks.FUEL_LOADER);
 
         generator.createTrivialCube(GCBlocks.OXYGEN_DETECTOR);
+        this.createPanelLights(generator);
+        createConcealed(generator, GCBlocks.CONCEALED_REDSTONE);
+        createConcealed(generator, GCBlocks.CONCEALED_DETECTOR);
+        createConcealed(generator, GCBlocks.CONCEALED_REPEATER);
         generator.createNonTemplateModelBlock(GCBlocks.CRUDE_OIL);
         generator.createNonTemplateModelBlock(GCBlocks.FUEL);
         generator.createNonTemplateModelBlock(GCBlocks.SULFURIC_ACID);
@@ -638,6 +642,48 @@ public class GCModelProvider extends FabricModelProvider {
         generator.blockStateOutput.accept(BlockModelGenerators.createWall(wall, wallPost, wallLowSide, wallTallSide));
         var wallInventory = GCModelTemplates.DETAILED_WALL_INVENTORY.create(wall, mapping, generator.modelOutput);
         generator.delegateItemModel(wall, wallInventory);
+    }
+
+    /** Blocks that look exactly like aluminum decoration, whatever their block state. */
+    private static void createConcealed(BlockModelGenerators generator, Block block) {
+        ResourceLocation model = ModelTemplates.CUBE_ALL.create(block, TextureMapping.cube(Constant.id("block/aluminum_decoration")), generator.modelOutput);
+        generator.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, model)));
+    }
+
+    private void createPanelLights(BlockModelGenerators generator) {
+        Block[] panels = {GCBlocks.PANEL_LIGHT_SQUARE, GCBlocks.PANEL_LIGHT_SPOTS, GCBlocks.PANEL_LIGHT_LINEAR, GCBlocks.PANEL_LIGHT_SF, GCBlocks.PANEL_LIGHT_SFDIAG};
+        String[] textures = {"square", "spots", "linear", "sf", "sfdiag"};
+        for (int i = 0; i < panels.length; i++) {
+            Block block = panels[i];
+            ResourceLocation base = Constant.id("block/aluminum_decoration");
+            ResourceLocation on = createPanelLightModel(generator, block, "", base, Constant.id("block/panel_light_" + textures[i]));
+            ResourceLocation off = createPanelLightModel(generator, block, "_off", base, Constant.id("block/panel_light_off"));
+            generator.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block)
+                    .with(PropertyDispatch.properties(BlockStateProperties.FACING, BlockStateProperties.LIT).generate((facing, lit) -> {
+                        Variant variant = Variant.variant().with(VariantProperties.MODEL, lit ? on : off);
+                        return switch (facing) {
+                            case UP -> variant.with(VariantProperties.X_ROT, VariantProperties.Rotation.R270);
+                            case DOWN -> variant.with(VariantProperties.X_ROT, VariantProperties.Rotation.R90);
+                            case EAST -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90);
+                            case SOUTH -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180);
+                            case WEST -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270);
+                            default -> variant;
+                        };
+                    })));
+            generator.delegateItemModel(block, on);
+        }
+    }
+
+    private static ResourceLocation createPanelLightModel(BlockModelGenerators generator, Block block, String suffix, ResourceLocation base, ResourceLocation face) {
+        TextureMapping mapping = new TextureMapping()
+                .put(TextureSlot.PARTICLE, base)
+                .put(TextureSlot.DOWN, base)
+                .put(TextureSlot.UP, base)
+                .put(TextureSlot.NORTH, face)
+                .put(TextureSlot.SOUTH, base)
+                .put(TextureSlot.EAST, base)
+                .put(TextureSlot.WEST, base);
+        return ModelTemplates.CUBE.createWithSuffix(block, suffix, mapping, generator.modelOutput);
     }
 
     private static void createRotatedDelegate(BlockModelGenerators generator, Block block) {

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "galacticraft:block/aluminum_decoration",
+    "east": "galacticraft:block/aluminum_decoration",
+    "north": "galacticraft:block/panel_light_square",
+    "particle": "galacticraft:block/aluminum_decoration",
+    "south": "galacticraft:block/aluminum_decoration",
+    "up": "galacticraft:block/aluminum_decoration",
+    "west": "galacticraft:block/aluminum_decoration"
+  }
+}

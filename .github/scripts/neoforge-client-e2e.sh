@@ -251,6 +251,30 @@ for block in "-5 64 5" "-4 64 5" "-5 66 5"; do
     fi
 done
 
+# Concealed redstone carries a signal like redstone dust: a redstone block feeds a chain of four.
+$RCON "$ow setblock -12 64 0 redstone_block" > /dev/null
+for x in -11 -10 -9 -8; do
+    $RCON "$ow setblock $x 64 0 galacticraft:concealed_redstone" > /dev/null
+done
+sleep 1
+for check in "-11 15" "-8 12"; do
+    read -r x power <<< "$check"
+    if [[ "$($RCON "$ow execute if block $x 64 0 galacticraft:concealed_redstone[power=$power]")" != *"Test passed"* ]]; then
+        fail "concealed redstone at $x 64 0 did not reach power $power"
+    fi
+done
+$RCON "$ow setblock -12 64 0 air" > /dev/null
+sleep 1
+if [[ "$($RCON "$ow execute if block -8 64 0 galacticraft:concealed_redstone[power=0]")" != *"Test passed"* ]]; then
+    fail "concealed redstone did not lose its signal"
+fi
+# A panel light goes dark while powered.
+$RCON "$ow setblock -8 64 3 galacticraft:panel_light_square[lit=true]" "$ow setblock -9 64 3 redstone_block" > /dev/null
+sleep 1
+if [[ "$($RCON "$ow execute if block -8 64 3 galacticraft:panel_light_square[lit=false]")" != *"Test passed"* ]]; then
+    fail "panel light did not go dark when powered"
+fi
+
 # 3x3 launch pad centred on (0, 64, 0) and a creative (fully fuelled) tier 1 rocket on it.
 pad=(center:0:0 north:0:-1 south:0:1 west:-1:0 east:1:0 north_west:-1:-1 north_east:1:-1 south_west:-1:1 south_east:1:1)
 for part in "${pad[@]}"; do

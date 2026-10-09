@@ -1,0 +1,50 @@
+{
+  "variants": {
+    "facing=down,lit=false": {
+      "model": "galacticraft:block/panel_light_sf_off",
+      "x": 90
+    },
+    "facing=down,lit=true": {
+      "model": "galacticraft:block/panel_light_sf",
+      "x": 90
+    },
+    "facing=east,lit=false": {
+      "model": "galacticraft:block/panel_light_sf_off",
+      "y": 90
+    },
+    "facing=east,lit=true": {
+      "model": "galacticraft:block/panel_light_sf",
+      "y": 90
+    },
+    "facing=north,lit=false": {
+      "model": "galacticraft:block/panel_light_sf_off"
+    },
+    "facing=north,lit=true": {
+      "model": "galacticraft:block/panel_light_sf"
+    },
+    "facing=south,lit=false": {
+      "model": "galacticraft:block/panel_light_sf_off",
+      "y": 180
+    },
+    "facing=south,lit=true": {
+      "model": "galacticraft:block/panel_light_sf",
+      "y": 180
+    },
+    "facing=up,lit=false": {
+      "model": "galacticraft:block/panel_light_sf_off",
+      "x": 270
+    },
+    "facing=up,lit=true": {
+      "model": "galacticraft:block/panel_light_sf",
+      "x": 270
+    },
+    "facing=west,lit=false": {
+      "model": "galacticraft:block/panel_light_sf_off",
+      "y": 270
+    },
+    "facing=west,lit=true": {
+      "model": "galacticraft:block/panel_light_sf",
+      "y": 270
+    }
+  }
+}

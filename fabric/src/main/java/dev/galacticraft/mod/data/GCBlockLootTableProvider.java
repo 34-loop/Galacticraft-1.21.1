@@ -347,6 +347,14 @@ public class GCBlockLootTableProvider extends FabricBlockLootTableProvider {
         this.dropSelf(GCBlocks.ENERGY_STORAGE_MODULE);
         this.dropSelf(GCBlocks.ENERGY_STORAGE_CLUSTER);
         this.dropSelf(GCBlocks.OXYGEN_DETECTOR);
+        this.dropSelf(GCBlocks.PANEL_LIGHT_SQUARE);
+        this.dropSelf(GCBlocks.PANEL_LIGHT_SPOTS);
+        this.dropSelf(GCBlocks.PANEL_LIGHT_LINEAR);
+        this.dropSelf(GCBlocks.PANEL_LIGHT_SF);
+        this.dropSelf(GCBlocks.PANEL_LIGHT_SFDIAG);
+        this.dropSelf(GCBlocks.CONCEALED_REDSTONE);
+        this.dropSelf(GCBlocks.CONCEALED_REPEATER);
+        this.dropSelf(GCBlocks.CONCEALED_DETECTOR);
         this.dropSelf(GCBlocks.ELECTRIC_FURNACE);
         this.dropSelf(GCBlocks.ELECTRIC_ARC_FURNACE);
         this.dropSelf(GCBlocks.REFINERY);

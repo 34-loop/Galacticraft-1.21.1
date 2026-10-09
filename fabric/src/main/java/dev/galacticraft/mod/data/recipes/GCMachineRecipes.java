@@ -285,6 +285,79 @@ public class GCMachineRecipes extends FabricRecipeProvider {
                 .emiDefaultRecipe(true)
                 .save(output);
 
+        GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.PANEL_LIGHT_SQUARE)
+                .define('X', Items.GLASS_PANE)
+                .define('Y', GCItems.GLOWSTONE_TORCH)
+                .define('Z', GCItems.COMPRESSED_STEEL)
+                .pattern("XXX")
+                .pattern("XYX")
+                .pattern("XZX")
+                .unlockedBy(getHasName(GCItems.GLOWSTONE_TORCH), has(GCItems.GLOWSTONE_TORCH))
+                .emiDefaultRecipe(true)
+                .save(output);
+
+        GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.PANEL_LIGHT_SPOTS)
+                .define('X', Items.GLASS_PANE)
+                .define('Y', GCItems.GLOWSTONE_TORCH)
+                .define('Z', GCItems.COMPRESSED_STEEL)
+                .pattern("X X")
+                .pattern(" Y ")
+                .pattern("XZX")
+                .unlockedBy(getHasName(GCItems.GLOWSTONE_TORCH), has(GCItems.GLOWSTONE_TORCH))
+                .emiDefaultRecipe(true)
+                .save(output);
+
+        GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.PANEL_LIGHT_LINEAR)
+                .define('X', Items.GLASS_PANE)
+                .define('Y', GCItems.GLOWSTONE_TORCH)
+                .define('Z', GCItems.COMPRESSED_STEEL)
+                .pattern("X X")
+                .pattern("XYX")
+                .pattern("XZX")
+                .unlockedBy(getHasName(GCItems.GLOWSTONE_TORCH), has(GCItems.GLOWSTONE_TORCH))
+                .emiDefaultRecipe(true)
+                .save(output);
+
+        GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.PANEL_LIGHT_SF)
+                .define('X', Items.GLASS_PANE)
+                .define('Y', GCItems.GLOWSTONE_TORCH)
+                .define('Z', GCItems.COMPRESSED_STEEL)
+                .pattern("   ")
+                .pattern("XYX")
+                .pattern(" Z ")
+                .unlockedBy(getHasName(GCItems.GLOWSTONE_TORCH), has(GCItems.GLOWSTONE_TORCH))
+                .emiDefaultRecipe(true)
+                .save(output);
+
+        GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.PANEL_LIGHT_SFDIAG)
+                .define('X', Items.GLASS_PANE)
+                .define('Y', GCItems.GLOWSTONE_TORCH)
+                .define('Z', GCItems.COMPRESSED_STEEL)
+                .pattern(" X ")
+                .pattern("XY ")
+                .pattern(" Z ")
+                .unlockedBy(getHasName(GCItems.GLOWSTONE_TORCH), has(GCItems.GLOWSTONE_TORCH))
+                .emiDefaultRecipe(true)
+                .save(output);
+
+        GCShapedRecipeBuilder.crafting(RecipeCategory.REDSTONE, GCBlocks.CONCEALED_REDSTONE, 4)
+                .define('X', GCBlocks.ALUMINUM_DECORATION)
+                .define('Y', Items.REDSTONE)
+                .pattern(" X ")
+                .pattern("XYX")
+                .pattern(" X ")
+                .unlockedBy(getHasName(GCBlocks.ALUMINUM_DECORATION), has(GCBlocks.ALUMINUM_DECORATION))
+                .emiDefaultRecipe(true)
+                .save(output);
+
+        GCShapedRecipeBuilder.crafting(RecipeCategory.REDSTONE, GCBlocks.CONCEALED_REPEATER)
+                .define('X', GCBlocks.ALUMINUM_DECORATION)
+                .define('Y', Items.REPEATER)
+                .pattern("XYX")
+                .unlockedBy(getHasName(GCBlocks.ALUMINUM_DECORATION), has(GCBlocks.ALUMINUM_DECORATION))
+                .emiDefaultRecipe(true)
+                .save(output);
+
         GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.OXYGEN_DETECTOR)
                 .define('S', GCItems.COMPRESSED_STEEL)
                 .define('V', GCItems.OXYGEN_VENT)

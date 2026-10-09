@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "X": {
+      "item": "galacticraft:aluminum_decoration"
+    },
+    "Y": {
+      "item": "minecraft:repeater"
+    }
+  },
+  "pattern": [
+    "XYX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "galacticraft:concealed_repeater"
+  }
+}

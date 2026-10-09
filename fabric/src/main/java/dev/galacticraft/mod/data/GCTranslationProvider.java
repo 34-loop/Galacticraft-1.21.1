@@ -396,6 +396,14 @@ public class GCTranslationProvider extends TranslationProvider {
         this.block(GCBlocks.ENERGY_STORAGE_MODULE, "Energy Storage Module");
         this.block(GCBlocks.ENERGY_STORAGE_CLUSTER, "Energy Storage Cluster");
         this.block(GCBlocks.OXYGEN_DETECTOR, "Oxygen Detector");
+        this.block(GCBlocks.PANEL_LIGHT_SQUARE, "Square Panel Light");
+        this.block(GCBlocks.PANEL_LIGHT_SPOTS, "Spots Panel Light");
+        this.block(GCBlocks.PANEL_LIGHT_LINEAR, "Linear Panel Light");
+        this.block(GCBlocks.PANEL_LIGHT_SF, "Space Station Panel Light");
+        this.block(GCBlocks.PANEL_LIGHT_SFDIAG, "Diagonal Space Station Panel Light");
+        this.block(GCBlocks.CONCEALED_REDSTONE, "Concealed Redstone");
+        this.block(GCBlocks.CONCEALED_REPEATER, "Concealed Repeater");
+        this.block(GCBlocks.CONCEALED_DETECTOR, "Concealed Detector");
         this.block(GCBlocks.ELECTRIC_FURNACE, "Electric Furnace");
         this.block(GCBlocks.ELECTRIC_ARC_FURNACE, "Electric Arc Furnace");
         this.block(GCBlocks.REFINERY, "Refinery");
@@ -1094,6 +1102,8 @@ public class GCTranslationProvider extends TranslationProvider {
         this.blockDesc(GCBlocks.ENERGY_STORAGE_MODULE, "Stores a large amount of energy.");
         this.blockDesc(GCBlocks.ENERGY_STORAGE_CLUSTER, "Stores an enormous amount of energy.");
         this.blockDesc(GCBlocks.OXYGEN_DETECTOR, "Emits a redstone signal when in a sealed, oxygenated area.");
+        this.blockDesc(GCBlocks.CONCEALED_REDSTONE, "Carries a redstone signal like redstone dust while looking like a decoration block.");
+        this.blockDesc(GCBlocks.CONCEALED_DETECTOR, "Looks like a decoration block. Changes its redstone signal when a player is in range in front of it.");
         this.blockDesc(GCBlocks.FOOD_CANNER, "Compresses several food items into a single can. Canned foods can be eaten while wearing an oxygen mask.");
         this.blockDesc(GCBlocks.FUEL_LOADER, "Loads fuel into a rocket placed on an adjacent launch pad.");
         this.blockDesc(GCBlocks.CARGO_LOADER, "Pushes items from its buffer into an adjacent container or docked cargo rocket.");

@@ -321,6 +321,14 @@ public class GCCreativeModeTabs {
                 output.accept(OXYGEN_BUBBLE_DISTRIBUTOR);
                 output.accept(TERRAFORMER);
                 output.accept(OXYGEN_DETECTOR);
+                output.accept(PANEL_LIGHT_SQUARE);
+                output.accept(PANEL_LIGHT_SPOTS);
+                output.accept(PANEL_LIGHT_LINEAR);
+                output.accept(PANEL_LIGHT_SF);
+                output.accept(PANEL_LIGHT_SFDIAG);
+                output.accept(CONCEALED_REDSTONE);
+                output.accept(CONCEALED_REPEATER);
+                output.accept(CONCEALED_DETECTOR);
                 output.accept(OXYGEN_DECOMPRESSOR);
                 output.accept(OXYGEN_COMPRESSOR);
                 output.accept(OXYGEN_STORAGE_MODULE);
