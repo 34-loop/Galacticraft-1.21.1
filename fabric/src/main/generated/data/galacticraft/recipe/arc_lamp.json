@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "galacticraft:desh_ingot"
+    },
+    "Y": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "Z": {
+      "item": "galacticraft:battery"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "YZY",
+    "XYX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "galacticraft:arc_lamp"
+  }
+}

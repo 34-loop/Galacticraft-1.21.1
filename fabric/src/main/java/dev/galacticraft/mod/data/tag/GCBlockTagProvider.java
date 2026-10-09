@@ -482,6 +482,7 @@ public class GCBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 GCBlocks.CONCEALED_REDSTONE,
                 GCBlocks.CONCEALED_REPEATER,
                 GCBlocks.CONCEALED_DETECTOR,
+                GCBlocks.ARC_LAMP,
                 GCBlocks.ELECTRIC_FURNACE,
                 GCBlocks.ELECTRIC_ARC_FURNACE,
                 GCBlocks.REFINERY,

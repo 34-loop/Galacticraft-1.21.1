@@ -404,6 +404,7 @@ public class GCTranslationProvider extends TranslationProvider {
         this.block(GCBlocks.CONCEALED_REDSTONE, "Concealed Redstone");
         this.block(GCBlocks.CONCEALED_REPEATER, "Concealed Repeater");
         this.block(GCBlocks.CONCEALED_DETECTOR, "Concealed Detector");
+        this.block(GCBlocks.ARC_LAMP, "Arc Lamp");
         this.block(GCBlocks.ELECTRIC_FURNACE, "Electric Furnace");
         this.block(GCBlocks.ELECTRIC_ARC_FURNACE, "Electric Arc Furnace");
         this.block(GCBlocks.REFINERY, "Refinery");
@@ -1104,6 +1105,7 @@ public class GCTranslationProvider extends TranslationProvider {
         this.blockDesc(GCBlocks.OXYGEN_DETECTOR, "Emits a redstone signal when in a sealed, oxygenated area.");
         this.blockDesc(GCBlocks.CONCEALED_REDSTONE, "Carries a redstone signal like redstone dust while looking like a decoration block.");
         this.blockDesc(GCBlocks.CONCEALED_DETECTOR, "Looks like a decoration block. Changes its redstone signal when a player is in range in front of it.");
+        this.blockDesc(GCBlocks.ARC_LAMP, "Lights up its surroundings and scares away hostile mobs. Turns off when powered by redstone.");
         this.blockDesc(GCBlocks.FOOD_CANNER, "Compresses several food items into a single can. Canned foods can be eaten while wearing an oxygen mask.");
         this.blockDesc(GCBlocks.FUEL_LOADER, "Loads fuel into a rocket placed on an adjacent launch pad.");
         this.blockDesc(GCBlocks.CARGO_LOADER, "Pushes items from its buffer into an adjacent container or docked cargo rocket.");
@@ -1143,6 +1145,8 @@ public class GCTranslationProvider extends TranslationProvider {
         this.add(Tooltip.FLUID_CANISTER_EMPTY, "Empty");
         this.add(Tooltip.FLUID_CANISTER_FLUID_INFO, "%s: %s");
         this.add(Tooltip.FLUID_CANISTER_LOX, "LOX");
+        this.add("block.galacticraft.liquid_nitrogen", "Liquid Nitrogen");
+        this.add("block.galacticraft.liquid_argon", "Liquid Argon");
     }
 
     protected void generateConfigTranslations() {

@@ -457,6 +457,8 @@ public interface Constant {
          * oxygen sprite is {@link #OXYGEN_STILL}, and there is no {@code liquid_oxygen.png}.
          */
         String LIQUID_OXYGEN = "liquid_oxygen";
+        String LIQUID_NITROGEN = "liquid_nitrogen";
+        String LIQUID_ARGON = "liquid_argon";
 
         static ResourceLocation fluidId(String s) {
             return Constant.id("block/fluid/" + s);

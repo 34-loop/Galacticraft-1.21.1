@@ -329,6 +329,7 @@ public class GCCreativeModeTabs {
                 output.accept(CONCEALED_REDSTONE);
                 output.accept(CONCEALED_REPEATER);
                 output.accept(CONCEALED_DETECTOR);
+                output.accept(ARC_LAMP);
                 output.accept(OXYGEN_DECOMPRESSOR);
                 output.accept(OXYGEN_COMPRESSOR);
                 output.accept(OXYGEN_STORAGE_MODULE);
@@ -364,7 +365,8 @@ public class GCCreativeModeTabs {
                 output.accept(FluidCanisterItem.getInfiniteCanister(FLUID_CANISTER, GCFluids.SULFURIC_ACID));
                 output.accept(FluidCanisterItem.getInfiniteCanister(FLUID_CANISTER, Gases.METHANE));
                 output.accept(FluidCanisterItem.getInfiniteCanister(FLUID_CANISTER, GCFluids.LIQUID_OXYGEN));
-                //output.accept(FluidCanisterItem.getFilledCanister(FLUID_CANISTER, GCFluids.LIQUID_NITROGEN)); // Liquid nitrogen not added yet
+                output.accept(FluidCanisterItem.getFilledCanister(FLUID_CANISTER, GCFluids.LIQUID_NITROGEN));
+                output.accept(FluidCanisterItem.getFilledCanister(FLUID_CANISTER, GCFluids.LIQUID_ARGON));
 
                 output.accept(SMALL_OXYGEN_TANK);
                 output.accept(OxygenTankItem.getFullTank(SMALL_OXYGEN_TANK));

@@ -274,6 +274,8 @@ public final class GCNeoForgeClient {
             if (tint != -1 && tint != 0xFFFFFFFF) return tint;
             if (data.variant().fluid().isSame(Gases.METHANE)) return 0xFF80FFFF;
             if (data.variant().fluid().isSame(GCFluids.LIQUID_OXYGEN)) return 0xFFD76453;
+            if (data.variant().fluid().isSame(GCFluids.LIQUID_NITROGEN)) return 0xFF9EC9E8;
+            if (data.variant().fluid().isSame(GCFluids.LIQUID_ARGON)) return 0xFFB890D8;
             return tint;
         }, GCItems.FLUID_CANISTER);
     }

@@ -41,6 +41,8 @@ public final class GCFluids {
     public static final FlowingFluid SULFURIC_ACID = new SulfuricAcidFluid.Still();
     public static final FlowingFluid FLOWING_SULFURIC_ACID = new SulfuricAcidFluid.Flowing();
     public static final Fluid LIQUID_OXYGEN = new OxygenFluid();
+    public static final Fluid LIQUID_NITROGEN = new OxygenFluid();
+    public static final Fluid LIQUID_ARGON = new OxygenFluid();
 
     private GCFluids() {
     }
@@ -53,6 +55,8 @@ public final class GCFluids {
         register(Constant.Fluid.SULFURIC_ACID_STILL, SULFURIC_ACID);
         register(Constant.Fluid.SULFURIC_ACID_FLOWING, FLOWING_SULFURIC_ACID);
         register(Constant.Fluid.LIQUID_OXYGEN, LIQUID_OXYGEN);
+        register(Constant.Fluid.LIQUID_NITROGEN, LIQUID_NITROGEN);
+        register(Constant.Fluid.LIQUID_ARGON, LIQUID_ARGON);
     }
 
     public static void registerFluidVariantAttributes() {

@@ -358,6 +358,17 @@ public class GCMachineRecipes extends FabricRecipeProvider {
                 .emiDefaultRecipe(true)
                 .save(output);
 
+        GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.ARC_LAMP)
+                .define('X', GCItems.DESH_INGOT)
+                .define('Y', Items.GLOWSTONE_DUST)
+                .define('Z', GCItems.BATTERY)
+                .pattern("XYX")
+                .pattern("YZY")
+                .pattern("XYX")
+                .unlockedBy(getHasName(GCItems.BATTERY), has(GCItems.BATTERY))
+                .emiDefaultRecipe(true)
+                .save(output);
+
         GCShapedRecipeBuilder.crafting(RecipeCategory.DECORATIONS, GCBlocks.OXYGEN_DETECTOR)
                 .define('S', GCItems.COMPRESSED_STEEL)
                 .define('V', GCItems.OXYGEN_VENT)

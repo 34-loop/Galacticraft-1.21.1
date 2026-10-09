@@ -385,6 +385,7 @@ public class GCModelProvider extends FabricModelProvider {
         createConcealed(generator, GCBlocks.CONCEALED_REDSTONE);
         createConcealed(generator, GCBlocks.CONCEALED_DETECTOR);
         createConcealed(generator, GCBlocks.CONCEALED_REPEATER);
+        this.createArcLamp(generator);
         generator.createNonTemplateModelBlock(GCBlocks.CRUDE_OIL);
         generator.createNonTemplateModelBlock(GCBlocks.FUEL);
         generator.createNonTemplateModelBlock(GCBlocks.SULFURIC_ACID);
@@ -684,6 +685,27 @@ public class GCModelProvider extends FabricModelProvider {
                 .put(TextureSlot.EAST, base)
                 .put(TextureSlot.WEST, base);
         return ModelTemplates.CUBE.createWithSuffix(block, suffix, mapping, generator.modelOutput);
+    }
+
+    private void createArcLamp(BlockModelGenerators generator) {
+        // The models are hand written in resources, copied from Galacticraft 4.
+        ResourceLocation floorOn = Constant.id("block/arc_lamp_on");
+        ResourceLocation floorOff = Constant.id("block/arc_lamp_off");
+        ResourceLocation sideOn = Constant.id("block/arc_lamp_side_on");
+        ResourceLocation sideOff = Constant.id("block/arc_lamp_side_off");
+        generator.blockStateOutput.accept(MultiVariantGenerator.multiVariant(GCBlocks.ARC_LAMP)
+                .with(PropertyDispatch.properties(BlockStateProperties.FACING, BlockStateProperties.LIT).generate((facing, lit) -> {
+                    boolean vertical = facing.getAxis() == Direction.Axis.Y;
+                    Variant variant = Variant.variant().with(VariantProperties.MODEL, vertical ? (lit ? floorOn : floorOff) : (lit ? sideOn : sideOff));
+                    return switch (facing) {
+                        case UP -> variant.with(VariantProperties.X_ROT, VariantProperties.Rotation.R180);
+                        case NORTH -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90);
+                        case EAST -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180);
+                        case SOUTH -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270);
+                        default -> variant;
+                    };
+                })));
+        generator.delegateItemModel(GCBlocks.ARC_LAMP, floorOn);
     }
 
     private static void createRotatedDelegate(BlockModelGenerators generator, Block block) {

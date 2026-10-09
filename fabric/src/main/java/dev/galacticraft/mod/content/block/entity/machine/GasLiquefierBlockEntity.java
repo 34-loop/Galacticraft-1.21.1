@@ -57,8 +57,8 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.VisibleForTesting;
 
 /**
- * Liquefies gases like the Galacticraft 4 gas liquefier: methane becomes rocket fuel and oxygen
- * becomes liquid oxygen. Every {@link #PROCESS_TICKS} ticks six millibuckets of gas become three of liquid.
+ * Liquefies gases like the Galacticraft 4 gas liquefier: methane becomes rocket fuel, oxygen
+ * becomes liquid oxygen, nitrogen liquid nitrogen and argon liquid argon. Every {@link #PROCESS_TICKS} ticks six millibuckets of gas become three of liquid.
  */
 public class GasLiquefierBlockEntity extends MachineBlockEntity {
     public static final int CHARGE_SLOT = 0;
@@ -85,11 +85,11 @@ public class GasLiquefierBlockEntity extends MachineBlockEntity {
                     ItemResourceSlot.builder(TransferType.PROCESSING)
                             .pos(125, 62)
                             .capacity(1)
-                            .filter(ResourceFilters.or(ResourceFilters.canExtractFluid(Gases.METHANE), ResourceFilters.canExtractFluid(Gases.OXYGEN))),
+                            .filter(ResourceFilters.or(ResourceFilters.canExtractFluid(Gases.METHANE), ResourceFilters.or(ResourceFilters.canExtractFluid(Gases.OXYGEN), ResourceFilters.or(ResourceFilters.canExtractFluid(Gases.NITROGEN), ResourceFilters.canExtractFluid(Gases.ARGON))))),
                     ItemResourceSlot.builder(TransferType.PROCESSING)
                             .pos(152, 62)
                             .capacity(1)
-                            .filter(ResourceFilters.or(ResourceFilters.canInsertFluid(GCFluids.FUEL), ResourceFilters.canInsertFluid(GCFluids.LIQUID_OXYGEN)))
+                            .filter(ResourceFilters.or(ResourceFilters.canInsertFluid(GCFluids.FUEL), ResourceFilters.or(ResourceFilters.canInsertFluid(GCFluids.LIQUID_OXYGEN), ResourceFilters.or(ResourceFilters.canInsertFluid(GCFluids.LIQUID_NITROGEN), ResourceFilters.canInsertFluid(GCFluids.LIQUID_ARGON)))))
             ),
             MachineEnergyStorage.spec(
                     Galacticraft.CONFIG.machineEnergyStorageSize(),
@@ -104,7 +104,7 @@ public class GasLiquefierBlockEntity extends MachineBlockEntity {
                     FluidResourceSlot.builder(TransferType.OUTPUT)
                             .pos(152, 8)
                             .capacity(FluidUtil.bucketsToDroplets(2))
-                            .filter((fluid, components) -> fluid == GCFluids.FUEL || fluid == GCFluids.LIQUID_OXYGEN)
+                            .filter((fluid, components) -> fluid == GCFluids.FUEL || fluid == GCFluids.LIQUID_OXYGEN || fluid == GCFluids.LIQUID_NITROGEN || fluid == GCFluids.LIQUID_ARGON)
             )
     );
 
@@ -120,6 +120,8 @@ public class GasLiquefierBlockEntity extends MachineBlockEntity {
     public static @Nullable Fluid liquidOf(@Nullable Fluid gas) {
         if (gas == Gases.METHANE) return GCFluids.FUEL;
         if (gas == Gases.OXYGEN) return GCFluids.LIQUID_OXYGEN;
+        if (gas == Gases.NITROGEN) return GCFluids.LIQUID_NITROGEN;
+        if (gas == Gases.ARGON) return GCFluids.LIQUID_ARGON;
         return null;
     }
 
